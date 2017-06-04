@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="com.qcloud.weapp.demo:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="com.qcloud.weapp.demo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="org.json.jar" module-name="com.qcloud.weapp.demo" />
+          <element id="library" level="project" name="com.qcloud.weapp.sdk" />
+          <element id="library" level="project" name="commons-beanutils-1.9.3" />
+          <element id="library" level="project" name="json-lib-2.4-jdk15" />
+          <element id="library" level="project" name="commons-lang-2.6" />
+          <element id="library" level="project" name="commons-collections-3.2.2" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="com.qcloud.weapp.demo/web/Web" />
+    </root>
+  </artifact>
+</component>

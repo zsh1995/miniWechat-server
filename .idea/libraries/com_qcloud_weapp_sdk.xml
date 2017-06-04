@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="com.qcloud.weapp.sdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/com.qcloud.weapp.sdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/com.qcloud.weapp.sdk.jar!/" />
+    </SOURCES>
+  </library>
+</component>

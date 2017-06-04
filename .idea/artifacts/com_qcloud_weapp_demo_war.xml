@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="com.qcloud.weapp.demo:war">
+    <output-path>$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war</output-path>
+    <root id="archive" name="com.qcloud.weapp.demo_war.war">
+      <element id="artifact" artifact-name="com.qcloud.weapp.demo:war exploded" />
+    </root>
+  </artifact>
+</component>
