@@ -3,6 +3,11 @@
     <output-path>$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war</output-path>
     <root id="archive" name="com.qcloud.weapp.demo_war.war">
       <element id="artifact" artifact-name="com.qcloud.weapp.demo:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.42-bin" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>
