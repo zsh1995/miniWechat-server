@@ -48,7 +48,7 @@ public class QuestionServlet extends HttpServlet{
             throws ServletException, IOException {
         LoginService service = new LoginService(request, response);
         QuestionDAO questionDAO = new QuestionDAO();
-        List<QuestionDTO> list = initDatas(questionDAO.getQuestion());
+        List<QuestionDTO> list = initDatas(questionDAO.getQuestionTest());
         //UserInfo userInfo = service.check();
         JSONObject result = new JSONObject();
         JSONObject data = new JSONObject();

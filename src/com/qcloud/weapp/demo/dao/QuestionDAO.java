@@ -1,10 +1,13 @@
 package com.qcloud.weapp.demo.dao;
 
 import com.qcloud.weapp.demo.dto.QuestionDTO;
+import com.qcloud.weapp.demo.mapper.QuestionMapper;
+import com.qcloud.weapp.demo.util.OptTemplate;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by zsh1995 on 2017/6/15.
@@ -49,6 +52,13 @@ public class QuestionDAO {
             e.printStackTrace();
         }
         return questionDTOList;
-
     }
+
+    public List<QuestionDTO> getQuestionTest(){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT * FROM wechat_questions_work";
+        Integer[] args = {};
+        return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
 }

@@ -2,33 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce2ab54d-4afb-4193-b34f-8838444efff1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.42-bin.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_42_bin.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/ChatTunnelHandler.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/ChatTunnelHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/QCloud.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/QCloud.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/Startup.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/Startup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/dto/OptionsDTO.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/dto/OptionsDTO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/dto/QuestionDTO.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/dto/QuestionDTO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/LoginServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/QuestionServlet.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/QuestionServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/TunnelServlet.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/TunnelServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/UserServlet.class" afterPath="$PROJECT_DIR$/build/classes/com/qcloud/weapp/demo/servlet/UserServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/db/DBConnection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/mapper/QuestionMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/ObjectMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/OptTemplate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war/com.qcloud.weapp.demo_war.war" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war/com.qcloud.weapp.demo_war.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/ChatTunnelHandler.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/ChatTunnelHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/QCloud.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/QCloud.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/Startup.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/Startup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/dto/OptionsDTO.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/dto/OptionsDTO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/dto/QuestionDTO.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/dto/QuestionDTO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/LoginServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/QuestionServlet.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/QuestionServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/TunnelServlet.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/TunnelServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/UserServlet.class" afterPath="$PROJECT_DIR$/classes/artifacts/com_qcloud_weapp_demo_war_exploded/WEB-INF/classes/com/qcloud/weapp/demo/servlet/UserServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/com_qcloud_weapp_demo_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/com_qcloud_weapp_demo_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/com_qcloud_weapp_demo_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/com_qcloud_weapp_demo_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com.qcloud.weapp.demo.iml" afterPath="$PROJECT_DIR$/com.qcloud.weapp.demo.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java" afterPath="$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -62,42 +43,78 @@
       <file leaf-file-name="UserServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/UserServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="20" column="18" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="18" />
+            <state relative-caret-position="437">
+              <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionServlet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QuestionServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+            <state relative-caret-position="221">
+              <caret line="54" column="57" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuestionDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuestionDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+            <state relative-caret-position="173">
+              <caret line="32" column="51" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1497523723034" expanded="true" signature="1312:1347" ph="SELECT * FRO... wechat_question_work" />
+                <marker date="1497607982581" expanded="true" signature="1437:1472" ph="SELECT * FRO... wechat_question_work" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestionMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/mapper/QuestionMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OptTemplate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/OptTemplate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/db/DBConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/ObjectMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,9 +122,12 @@
       <file leaf-file-name="Connection.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Shangde_Dev_All/jdk1.7.0_79/src.zip!/java/sql/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
+            <state relative-caret-position="2147">
               <caret line="137" column="22" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
-              <folding />
+              <folding>
+                <element signature="e#0#72218#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,29 +135,12 @@
       <file leaf-file-name="ResultSet.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Shangde_Dev_All/jdk1.7.0_79/src.zip!/java/sql/ResultSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
+            <state relative-caret-position="2299">
               <caret line="147" column="17" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuestionDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/dto/QuestionDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="27" column="37" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TunnelServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/TunnelServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="25" column="50" selection-start-line="24" selection-start-column="4" selection-end-line="25" selection-end-column="50" />
-              <folding />
+              <folding>
+                <element signature="e#0#199967#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,6 +150,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -164,9 +168,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dto/OptionsDTO.java" />
         <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dto/QuestionDTO.java" />
-        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java" />
         <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/LogFilter.java" />
+        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/ObjectMapper.java" />
+        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/mapper/QuestionMapper.java" />
+        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/OptTemplate.java" />
+        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/qcloud/weapp/demo/db/DBConnection.java" />
       </list>
     </option>
   </component>
@@ -221,7 +229,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -274,8 +281,119 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniWechat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,6 +405,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -855,15 +974,18 @@
       <workItem from="1497516265637" duration="1859000" />
       <workItem from="1497518266064" duration="801000" />
       <workItem from="1497519409835" duration="5774000" />
+      <workItem from="1497581771468" duration="25000" />
+      <workItem from="1497595656384" duration="3641000" />
+      <workItem from="1497606633275" duration="2694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20846000" />
+    <option name="totallyTimeSpent" value="27206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -943,52 +1065,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/UserServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="28" column="81" selection-start-line="28" selection-start-column="81" selection-end-line="28" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1497523723034" expanded="true" signature="1312:1347" ph="SELECT * FRO... wechat_question_work" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/dto/QuestionDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/ChatTunnelHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1067#1085#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/Startup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -1013,18 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#202#203#0" expanded="false" />
-            <element signature="e#232#233#0" expanded="false" />
-            <element signature="e#266#267#0" expanded="false" />
-            <element signature="e#296#297#0" expanded="false" />
-            <element signature="e#342#343#0" expanded="false" />
-            <element signature="e#380#381#0" expanded="false" />
-            <element signature="e#412#413#0" expanded="false" />
-            <element signature="e#440#441#0" expanded="false" />
-            <element signature="e#482#483#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1099,18 +1163,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#202#203#0" expanded="false" />
-            <element signature="e#232#233#0" expanded="false" />
-            <element signature="e#266#267#0" expanded="false" />
-            <element signature="e#296#297#0" expanded="false" />
-            <element signature="e#342#343#0" expanded="false" />
-            <element signature="e#380#381#0" expanded="false" />
-            <element signature="e#412#413#0" expanded="false" />
-            <element signature="e#440#441#0" expanded="false" />
-            <element signature="e#482#483#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1185,18 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#202#203#0" expanded="false" />
-            <element signature="e#232#233#0" expanded="false" />
-            <element signature="e#266#267#0" expanded="false" />
-            <element signature="e#296#297#0" expanded="false" />
-            <element signature="e#342#343#0" expanded="false" />
-            <element signature="e#380#381#0" expanded="false" />
-            <element signature="e#412#413#0" expanded="false" />
-            <element signature="e#440#441#0" expanded="false" />
-            <element signature="e#482#483#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1299,18 +1339,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#202#203#0" expanded="false" />
-            <element signature="e#232#233#0" expanded="false" />
-            <element signature="e#266#267#0" expanded="false" />
-            <element signature="e#296#297#0" expanded="false" />
-            <element signature="e#342#343#0" expanded="false" />
-            <element signature="e#380#381#0" expanded="false" />
-            <element signature="e#412#413#0" expanded="false" />
-            <element signature="e#440#441#0" expanded="false" />
-            <element signature="e#482#483#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1318,15 +1346,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/UserServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1334,7 +1353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1342,7 +1360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1370,46 +1387,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Shangde_Dev_All/jdk1.7.0_79/src.zip!/java/sql/ResultSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
+        <state relative-caret-position="2299">
           <caret line="147" column="17" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="e#0#199967#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Shangde_Dev_All/jdk1.7.0_79/src.zip!/java/sql/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
+        <state relative-caret-position="2147">
           <caret line="137" column="22" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#72218#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/LogFilter.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/mapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/LogFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/mapper/QuestionMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="399">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/ObjectMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/UserServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/util/OptTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/dao/QuestionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+        <state relative-caret-position="173">
+          <caret line="32" column="51" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1497523723034" expanded="true" signature="1312:1347" ph="SELECT * FRO... wechat_question_work" />
+            <marker date="1497607982581" expanded="true" signature="1437:1472" ph="SELECT * FRO... wechat_question_work" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/db/DBConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/weapp/demo/servlet/QuestionServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="54" column="57" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
