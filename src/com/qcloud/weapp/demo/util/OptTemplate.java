@@ -50,6 +50,8 @@ public class OptTemplate {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
         } finally {
             closeAll(conn, ppst);
         }

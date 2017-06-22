@@ -18,6 +18,9 @@ public class QuestionMapper implements ObjectMapper {
         try {
                 questionDTO = new QuestionDTO();
                 questionDTO.setContent(set.getString("question_content"));
+                questionDTO.setTips(set.getString("tip"));
+                questionDTO.setAnalyse(set.getString("analysis"));
+                questionDTO.setType(set.getString("type"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

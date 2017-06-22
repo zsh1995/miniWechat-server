@@ -2,6 +2,7 @@ package com.qcloud.weapp.demo.dao;
 
 import com.qcloud.weapp.demo.dto.QuestionDTO;
 import com.qcloud.weapp.demo.mapper.QuestionMapper;
+import com.qcloud.weapp.demo.util.ObjectMapper;
 import com.qcloud.weapp.demo.util.OptTemplate;
 
 import java.sql.*;
@@ -54,11 +55,45 @@ public class QuestionDAO {
         return questionDTOList;
     }
 
-    public List<QuestionDTO> getQuestionTest(){
+    public List<QuestionDTO> getQuestionWork(int num){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT * FROM wechat_questions_work";
-        Integer[] args = {};
+        String sql = "SELECT * FROM wechat_questions_work WHERE id in (?,?,?,?,?,?)";
+        Integer[] args = {num,num+1,num+2,num+3,num+4,num+5};
         return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
+    public List<QuestionDTO> getQuestionLove(int num){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT * FROM wechat_questions_love WHERE id in (?,?,?,?,?,?)";
+        Integer[] args = {num,num+1,num+2,num+3,num+4,num+5};
+        return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
+    public List<QuestionDTO> getQuestionSocial(int num){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT * FROM wechat_questions_social WHERE id in (?,?,?,?,?,?)";
+        Integer[] args = {num,num+1,num+2,num+3,num+4,num+5};
+        return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
+
+    public Integer getAllCount(){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT MAX(id) FROM wechat_questions_work";
+        Integer[] args = {};
+        int count = (int)optTemplate.find(sql, args, new ObjectMapper() {
+            @Override
+            public Object mapping(ResultSet set) {
+                int id = 0;
+                try {
+                    id = set.getInt("id");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return id;
+            }
+        });
+        return count;
     }
 
 }

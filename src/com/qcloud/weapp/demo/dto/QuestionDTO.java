@@ -8,6 +8,14 @@ import java.util.List;
 public class QuestionDTO {
     private String content;
 
+    private List<OptionsDTO> options;
+
+    private String type;
+
+    private String tips;
+
+    private String analyse;
+
     public String getContent() {
         return content;
     }
@@ -15,7 +23,6 @@ public class QuestionDTO {
     public void setContent(String content) {
         this.content = content;
     }
-
 
     public List<OptionsDTO> getOptions() {
         return options;
@@ -25,6 +32,28 @@ public class QuestionDTO {
         this.options = options;
     }
 
-    private List<OptionsDTO> options;
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTips() {
+        return tips;
+    }
+
+    public void setTips(String tips) {
+        this.tips = tips;
+    }
+
+    public String getAnalyse() {
+        return analyse;
+    }
+
+    public void setAnalyse(String analyse) {
+        this.analyse = analyse;
+    }
 
 }

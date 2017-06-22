@@ -1,5 +1,7 @@
 package com.qcloud.weapp.demo.db;
 
+import org.apache.commons.logging.Log;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,11 +11,11 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    private static String db_url = "jdbc:mysql://47.93.196.237:3306/wechat-BE?useUnicode=true&characterEncoding=utf-8";
+    private static String db_url = "jdbc:mysql://10.66.217.225:3306/tinyProgram_BE?useUnicode=true&characterEncoding=utf-8&useSSL=true";
 
-    private static String user_name="mrzsh";
+    private static String user_name="wechat_all";
 
-    private static String user_pwd="123456";
+    private static String user_pwd="zsh19950314#";
 
     private static Connection conn= null;
 
@@ -29,7 +31,12 @@ public class DBConnection {
         try {
             conn = DriverManager.getConnection(db_url,user_name,user_pwd);
             conn.setAutoCommit(false);
+            if (conn  == null){
+                throw new Exception("conn is null");
+            }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return conn;

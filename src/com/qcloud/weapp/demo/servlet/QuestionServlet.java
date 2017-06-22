@@ -5,8 +5,12 @@ import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
 import com.qcloud.weapp.demo.dao.QuestionDAO;
+import com.qcloud.weapp.demo.dao.UploadScoreDAO;
 import com.qcloud.weapp.demo.dto.OptionsDTO;
 import com.qcloud.weapp.demo.dto.QuestionDTO;
+import com.qcloud.weapp.demo.service.PracticeService;
+import com.qcloud.weapp.demo.service.PracticeServiceImpl;
+import com.qcloud.weapp.demo.util.JsonReader;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
@@ -44,11 +48,15 @@ public class QuestionServlet extends HttpServlet{
 
     }
 
+    private PracticeService practiceService = new PracticeServiceImpl();
+
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         LoginService service = new LoginService(request, response);
-        QuestionDAO questionDAO = new QuestionDAO();
-        List<QuestionDTO> list = initDatas(questionDAO.getQuestionTest());
+        JSONObject jsonObject = JsonReader.receivePost(request);
+        int stars = jsonObject.getInt("stars");
+        int groupId = jsonObject.getInt("groupId");
+        List<QuestionDTO> list = initDatas(practiceService.getDatas(stars,groupId));
         //UserInfo userInfo = service.check();
         JSONObject result = new JSONObject();
         JSONObject data = new JSONObject();

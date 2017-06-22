@@ -20,7 +20,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/build/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -47,5 +47,6 @@
     <orderEntry type="library" name="commons-lang-2.6" level="project" />
     <orderEntry type="library" name="commons-collections-3.2.2" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.42-bin" level="project" />
+    <orderEntry type="library" name="log4j" level="project" />
   </component>
 </module>
