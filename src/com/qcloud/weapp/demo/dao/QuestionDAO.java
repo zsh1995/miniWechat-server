@@ -15,67 +15,26 @@ import java.util.Objects;
  */
 public class QuestionDAO {
 
-    private ResultSet querySQL(String sql) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        String url = "jdbc:mysql://47.93.196.237:3306/wechat-BE?useUnicode=true&characterEncoding=utf-8";
-        String username ="zsh1995";
-        String password = "123456";
-        Connection conn = DriverManager.getConnection(url,username,password);
-        Statement statement = conn.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
-
-        return statement.executeQuery(sql);
-
-    }
-
-    public List<QuestionDTO> getQuestion(){
-        List<QuestionDTO> questionDTOList = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://47.93.196.237:3306/wechat-BE?useUnicode=true&characterEncoding=utf-8";
-            String username ="mrzsh";
-            String password = "123456";
-            Connection conn = DriverManager.getConnection(url,username,password);
-            Statement statement = conn.createStatement();
-            String sql = "SELECT * FROM wechat_questions_work";
-            ResultSet resultSet = statement.executeQuery(sql);
-            while(resultSet.next()){
-                QuestionDTO questionDTO = new QuestionDTO();
-                questionDTO.setContent(resultSet.getString("question_content"));
-                questionDTOList.add(questionDTO);
-            }
-            resultSet.close();
-            statement.close();
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return questionDTOList;
-    }
-
-    public List<QuestionDTO> getQuestionWork(int num){
+    public List<QuestionDTO> getQuestionWork(){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT * FROM wechat_questions_work WHERE id in (?,?,?,?,?,?)";
-        Integer[] args = {num,num+1,num+2,num+3,num+4,num+5};
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content FROM wechat_questions_work wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id WHERE pq.practice_class = 'work'";
+        Object[] args={};
         return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
     }
 
-    public List<QuestionDTO> getQuestionLove(int num){
+    public List<QuestionDTO> getQuestionLove(){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT * FROM wechat_questions_love WHERE id in (?,?,?,?,?,?)";
-        Integer[] args = {num,num+1,num+2,num+3,num+4,num+5};
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content FROM wechat_questions_love wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id WHERE pq.practice_class = 'love'";
+        Object[] args={};
         return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
     }
 
-    public List<QuestionDTO> getQuestionSocial(int num){
+    public List<QuestionDTO> getQuestionSocial(){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT * FROM wechat_questions_social WHERE id in (?,?,?,?,?,?)";
-        Integer[] args = {num,num+1,num+2,num+3,num+4,num+5};
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content FROM wechat_questions_social wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id WHERE pq.practice_class = 'social'";
+        Object[] args={};
         return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
     }
-
 
     public Integer getAllCount(){
         OptTemplate optTemplate = new OptTemplate();

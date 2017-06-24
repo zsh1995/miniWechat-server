@@ -24,14 +24,15 @@ public class PracticeServiceImpl implements PracticeService{
     @Override
     public List<QuestionDTO> getDatas(int stars,int groupId) {
         QuestionDAO questionDAO = new QuestionDAO();
+
         if(1 == stars){
-            return questionDAO.getQuestionLove(2);
+            return questionDAO.getQuestionLove();
         }
         if(2 == stars){
-            return questionDAO.getQuestionWork(2);
+            return questionDAO.getQuestionWork();
         }
         if(3 == stars){
-            return questionDAO.getQuestionSocial(2);
+            return questionDAO.getQuestionSocial();
         }else {
             return new ArrayList<QuestionDTO>();
         }
