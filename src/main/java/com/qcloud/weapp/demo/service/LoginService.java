@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.service;
+package com.qcloud.weapp.demo.service;
 
 import com.qcloud.weapp.authorization.UserInfo;
 

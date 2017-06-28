@@ -1,7 +1,7 @@
-package main.java.com.qcloud.weapp.demo.service;
+package com.qcloud.weapp.demo.service;
 
-import main.java.com.qcloud.weapp.demo.dto.PracticeRecordDTO;
-import main.java.com.qcloud.weapp.demo.dto.QuestionDTO;
+import com.qcloud.weapp.demo.dto.PracticeRecordDTO;
+import com.qcloud.weapp.demo.dto.QuestionDTO;
 
 import java.util.List;
 

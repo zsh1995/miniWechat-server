@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.servlet.wechatPay;
+package com.qcloud.weapp.demo.servlet.wechatPay;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

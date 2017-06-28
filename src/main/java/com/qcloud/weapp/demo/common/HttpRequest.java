@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.common;
+package com.qcloud.weapp.demo.common;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;

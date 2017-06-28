@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.dto;
+package com.qcloud.weapp.demo.dto;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

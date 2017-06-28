@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.dto;
+package com.qcloud.weapp.demo.dto;
 
 /**
  * Created by zsh1995 on 2017/6/26.

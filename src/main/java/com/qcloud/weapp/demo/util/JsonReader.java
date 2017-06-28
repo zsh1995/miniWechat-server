@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.util;
+package com.qcloud.weapp.demo.util;
 
 import net.sf.json.JSONObject;
 

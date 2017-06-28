@@ -1,7 +1,7 @@
-package main.java.com.qcloud.weapp.demo.dao;
+package com.qcloud.weapp.demo.dao;
 
-import main.java.com.qcloud.weapp.demo.dto.UserInfoDTO;
-import main.java.com.qcloud.weapp.demo.util.OptTemplate;
+import com.qcloud.weapp.demo.dto.UserInfoDTO;
+import com.qcloud.weapp.demo.util.OptTemplate;
 
 /**
  * Created by Administrator on 2017/6/17.

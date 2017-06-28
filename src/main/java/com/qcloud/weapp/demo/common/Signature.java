@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.common;
+package com.qcloud.weapp.demo.common;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.apache.log4j.Logger;

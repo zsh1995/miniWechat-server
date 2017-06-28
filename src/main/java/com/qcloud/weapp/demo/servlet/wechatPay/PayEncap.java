@@ -1,17 +1,17 @@
-package main.java.com.qcloud.weapp.demo.servlet.wechatPay;
+package com.qcloud.weapp.demo.servlet.wechatPay;
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
 import com.thoughtworks.xstream.XStream;
-import main.java.com.qcloud.weapp.demo.common.Configure;
-import main.java.com.qcloud.weapp.demo.common.HttpRequest;
-import main.java.com.qcloud.weapp.demo.common.RandomStringGenerator;
-import main.java.com.qcloud.weapp.demo.common.Signature;
-import main.java.com.qcloud.weapp.demo.dto.OrderInfoDTO;
-import main.java.com.qcloud.weapp.demo.dto.OrderReturnDTO;
-import main.java.com.qcloud.weapp.demo.dto.SignInfoDTO;
+import com.qcloud.weapp.demo.common.Configure;
+import com.qcloud.weapp.demo.common.HttpRequest;
+import com.qcloud.weapp.demo.common.RandomStringGenerator;
+import com.qcloud.weapp.demo.common.Signature;
+import com.qcloud.weapp.demo.dto.OrderInfoDTO;
+import com.qcloud.weapp.demo.dto.OrderReturnDTO;
+import com.qcloud.weapp.demo.dto.SignInfoDTO;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;

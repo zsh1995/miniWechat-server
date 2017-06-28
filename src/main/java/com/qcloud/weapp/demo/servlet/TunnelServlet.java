@@ -1,9 +1,9 @@
-package main.java.com.qcloud.weapp.demo.servlet;
+package com.qcloud.weapp.demo.servlet;
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.tunnel.TunnelHandleOptions;
 import com.qcloud.weapp.tunnel.TunnelService;
-import main.java.com.qcloud.weapp.demo.ChatTunnelHandler;
+import com.qcloud.weapp.demo.ChatTunnelHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

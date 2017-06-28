@@ -1,10 +1,10 @@
-package main.java.com.qcloud.weapp.demo.dao;
+package com.qcloud.weapp.demo.dao;
 
-import main.java.com.qcloud.weapp.demo.dto.PracticeRecordDTO;
-import main.java.com.qcloud.weapp.demo.dto.UserInfoDTO;
-import main.java.com.qcloud.weapp.demo.mapper.PracticeRecordMapper;
-import main.java.com.qcloud.weapp.demo.mapper.UserInfoMapper;
-import main.java.com.qcloud.weapp.demo.util.OptTemplate;
+import com.qcloud.weapp.demo.dto.PracticeRecordDTO;
+import com.qcloud.weapp.demo.dto.UserInfoDTO;
+import com.qcloud.weapp.demo.mapper.PracticeRecordMapper;
+import com.qcloud.weapp.demo.mapper.UserInfoMapper;
+import com.qcloud.weapp.demo.util.OptTemplate;
 
 import java.util.List;
 

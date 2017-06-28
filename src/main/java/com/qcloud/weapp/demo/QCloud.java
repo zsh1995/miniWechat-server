@@ -1,4 +1,5 @@
-package main.java.com.qcloud.weapp.demo;
+package com.qcloud.weapp.demo;
+
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.ConfigurationManager;

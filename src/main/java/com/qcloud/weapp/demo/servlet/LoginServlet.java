@@ -1,10 +1,10 @@
-package main.java.com.qcloud.weapp.demo.servlet;
+package com.qcloud.weapp.demo.servlet;
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
-import main.java.com.qcloud.weapp.demo.service.LoginServiceImpl;
+import com.qcloud.weapp.demo.service.LoginServiceImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 通过 ServletRequest 和 ServletResponse 初始化登录服务
 		LoginService service = new LoginService(request, response);
-		main.java.com.qcloud.weapp.demo.service.LoginService loginService= new LoginServiceImpl();
+		com.qcloud.weapp.demo.service.LoginService loginService= new LoginServiceImpl();
 		Log log = LogFactory.getLog(this.getClass());
 		try {
 			// 调用登录接口，如果登录成功可以获得登录信息

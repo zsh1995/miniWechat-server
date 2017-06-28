@@ -1,8 +1,8 @@
-package main.java.com.qcloud.weapp.demo.service;
+package com.qcloud.weapp.demo.service;
 
 import com.qcloud.weapp.authorization.UserInfo;
-import main.java.com.qcloud.weapp.demo.dao.UserDAO;
-import main.java.com.qcloud.weapp.demo.dto.UserInfoDTO;
+import com.qcloud.weapp.demo.dao.UserDAO;
+import com.qcloud.weapp.demo.dto.UserInfoDTO;
 
 /**
  * Created by Administrator on 2017/6/18.

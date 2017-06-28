@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.common;
+package com.qcloud.weapp.demo.common;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

@@ -1,7 +1,7 @@
-package main.java.com.qcloud.weapp.demo.mapper;
+package com.qcloud.weapp.demo.mapper;
 
-import main.java.com.qcloud.weapp.demo.dto.UserInfoDTO;
-import main.java.com.qcloud.weapp.demo.util.ObjectMapper;
+import com.qcloud.weapp.demo.dto.UserInfoDTO;
+import com.qcloud.weapp.demo.util.ObjectMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

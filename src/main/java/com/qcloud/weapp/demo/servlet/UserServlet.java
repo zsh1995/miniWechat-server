@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.servlet;
+package com.qcloud.weapp.demo.servlet;
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;

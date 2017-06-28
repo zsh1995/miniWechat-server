@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.db;
+package com.qcloud.weapp.demo.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

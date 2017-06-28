@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo.common;
+package com.qcloud.weapp.demo.common;
 
 public class Configure {
 	private static String key = "你的商户的api秘钥";

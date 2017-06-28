@@ -1,4 +1,4 @@
-package main.java.com.qcloud.weapp.demo;
+package com.qcloud.weapp.demo;
 
 import org.apache.log4j.PropertyConfigurator;
 

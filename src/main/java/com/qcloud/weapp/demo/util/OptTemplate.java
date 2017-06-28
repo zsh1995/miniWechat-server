@@ -1,6 +1,6 @@
-package main.java.com.qcloud.weapp.demo.util;
+package com.qcloud.weapp.demo.util;
 
-import main.java.com.qcloud.weapp.demo.db.DBConnection;
+import com.qcloud.weapp.demo.db.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

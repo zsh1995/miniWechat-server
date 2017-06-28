@@ -1,11 +1,11 @@
-package main.java.com.qcloud.weapp.demo.servlet;
+package com.qcloud.weapp.demo.servlet;
 
 import com.qcloud.weapp.authorization.LoginService;
-import main.java.com.qcloud.weapp.demo.dto.OptionsDTO;
-import main.java.com.qcloud.weapp.demo.dto.QuestionDTO;
-import main.java.com.qcloud.weapp.demo.service.PracticeService;
-import main.java.com.qcloud.weapp.demo.service.PracticeServiceImpl;
-import main.java.com.qcloud.weapp.demo.util.JsonReader;
+import com.qcloud.weapp.demo.dto.OptionsDTO;
+import com.qcloud.weapp.demo.dto.QuestionDTO;
+import com.qcloud.weapp.demo.service.PracticeService;
+import com.qcloud.weapp.demo.service.PracticeServiceImpl;
+import com.qcloud.weapp.demo.util.JsonReader;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
