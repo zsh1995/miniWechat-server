@@ -64,8 +64,8 @@ public class PayEncap extends HttpServlet{
             order.setBody("dfdfdf");
             order.setOut_trade_no(RandomStringGenerator.getRandomStringByLength(32));
             order.setTotal_fee(10);
-            order.setSpbill_create_ip("123.57.218.54");
-            order.setNotify_url("https://www.see-source.com/weixinpay/PayResult");
+            order.setSpbill_create_ip("10.105.248.161");
+            order.setNotify_url("https://78662138.qcloud.la/gslm/weixinpay/PayResult");
             order.setTrade_type("JSAPI");
             order.setOpenId(openId);
             order.setSign_type("MD5");

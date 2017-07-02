@@ -13,15 +13,24 @@ public class UserInfoMapper implements ObjectMapper {
     @Override
     public Object mapping(ResultSet set) {
         UserInfoDTO userInfoDTO = null;
-        try {
-            userInfoDTO = new UserInfoDTO();
-            userInfoDTO.setId(set.getInt("id"));
-            userInfoDTO.setOpenId(set.getString("openId"));
-            userInfoDTO.setAvatarUrl(set.getString("avatar_url"));
-            userInfoDTO.setNickName(set.getString("wechat_nick"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        userInfoDTO = new UserInfoDTO();
+        userInfoDTO.setId((Integer) safeResultGet(set,"id"));
+        userInfoDTO.setOpenId((String) safeResultGet(set,"openId"));
+        userInfoDTO.setAvatarUrl((String) safeResultGet(set,"avatar_url"));
+        userInfoDTO.setNickName((String) safeResultGet(set,"wechat_nick"));
+        userInfoDTO.setStudent_name((String) safeResultGet(set,"student_name"));
+        userInfoDTO.setSchool((String) safeResultGet(set,"school"));
+        userInfoDTO.setMajor((String) safeResultGet(set,"major"));
+        userInfoDTO.setPhoneNumber((String) safeResultGet(set,"phone_number"));
         return userInfoDTO;
+    }
+    private Object safeResultGet(ResultSet set, String columnLabel){
+        Object obj = null;
+        try {
+            obj = set.getObject(columnLabel);
+        } catch (SQLException e) {
+            obj = null;
+        }
+        return obj;
     }
 }

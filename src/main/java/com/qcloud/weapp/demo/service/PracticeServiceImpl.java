@@ -26,13 +26,13 @@ public class PracticeServiceImpl implements PracticeService {
         QuestionDAO questionDAO = new QuestionDAO();
 
         if(1 == stars){
-            return questionDAO.getQuestionLove();
+            return questionDAO.getQuestionLove(groupId);
         }
         if(2 == stars){
-            return questionDAO.getQuestionWork();
+            return questionDAO.getQuestionWork(groupId);
         }
         if(3 == stars){
-            return questionDAO.getQuestionSocial();
+            return questionDAO.getQuestionSocial(groupId);
         }else {
             return new ArrayList<QuestionDTO>();
         }

@@ -5,11 +5,16 @@ import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
 import com.qcloud.weapp.demo.dto.PracticeRecordDTO;
+import com.qcloud.weapp.demo.dto.UserInfoDTO;
 import com.qcloud.weapp.demo.service.PracticeService;
 import com.qcloud.weapp.demo.service.PracticeServiceImpl;
+import com.qcloud.weapp.demo.service.UserInfoService;
+import com.qcloud.weapp.demo.service.UserInfoServiceImpl;
 import com.qcloud.weapp.demo.util.JsonReader;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,24 +25,25 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/20.
+ * Created by Administrator on 2017/7/2.
  */
-@WebServlet("/getScores")
-public class GetScoresServlet extends HttpServlet {
+@WebServlet("/userInfo/getUserInfo")
+public class GetUserInfoServlet extends HttpServlet {
 
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Log log = LogFactory.getLog(this.getClass());
         LoginService service = new LoginService(request, response);
-        PracticeService practiceService = new PracticeServiceImpl();
+        UserInfoService userInfoService = new UserInfoServiceImpl();
         try {
             UserInfo userInfo = service.check();
-            JSONObject jsonObject = JsonReader.receivePost(request);
-            int stars = jsonObject.getInt("stars");
-            List<PracticeRecordDTO> practiceRecords = practiceService.getRecord(userInfo.getOpenId(),stars);
+            UserInfoDTO userInfoDTO = userInfoService.getUserInfo(userInfo.getOpenId());
+
             JSONObject result = new JSONObject();
             JSONObject data = new JSONObject();
-            JSONArray listArray = JSONArray.fromObject(practiceRecords);
-            data.put("practiceRecords",listArray);
+            JSONObject listArray = JSONObject.fromObject(userInfoDTO);
+            data.put("userInfo",listArray);
+            log.error("userInfo is :"+listArray);
             result.put("code", 0);
             result.put("message", "OK");
             result.put("data", data);
@@ -50,6 +56,4 @@ public class GetScoresServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
-
-    }
+}

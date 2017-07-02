@@ -1,14 +1,14 @@
 package com.qcloud.weapp.demo.common;
 
 public class Configure {
-	private static String key = "你的商户的api秘钥";
+	private static String key = "17JUWdcTzCN7MphU2e3AnC20QhTWV1OE";
 
 	//小程序ID	
-	private static String appID = "你的小程序id";
+	private static String appID = "wx8e1d7f4f0591754";
 	//商户号
-	private static String mch_id = "你的商户号";
+	private static String mch_id = "1482678932@1482678932";
 	//
-	private static String secret = "你的小程序的secret";
+	private static String secret = "daab992ed773dfcd8c3023d06e04b1f6";
 
 	public static String getSecret() {
 		return secret;
