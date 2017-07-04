@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.qcloud.weapp.demo.common.StreamUtil;
+import com.qcloud.weapp.demo.dto.OrderReturnDTO;
+import com.qcloud.weapp.demo.dto.weixinPay.WechatResult;
+import com.qcloud.weapp.demo.dto.weixinPay.WechatResultDTO;
+import com.thoughtworks.xstream.XStream;
 import org.apache.log4j.Logger;
 
 
@@ -36,6 +40,9 @@ public class PayResult extends HttpServlet {
 		
 		String reqParams = StreamUtil.read(request.getInputStream());
 		L.info("-------支付结果:"+reqParams);
+		XStream xStream = new XStream();
+		xStream.alias("xml", WechatResultDTO.class);
+		WechatResultDTO returnInfo = (WechatResultDTO)xStream.fromXML(reqParams);
 		StringBuffer sb = new StringBuffer("<xml><return_code>SUCCESS</return_code><return_msg>OK</return_msg></xml>");
 		response.getWriter().append(sb.toString());
 	}

@@ -15,7 +15,7 @@ public class OrderInfoDTO {
     private String spbill_create_ip;// 终端IP
     private String notify_url;// 通知地址
     private String trade_type;// 交易类型
-    private String openId;//用户标识
+    private String openid;//用户标识
 
     public String getSign_type() {
         return sign_type;
@@ -25,12 +25,12 @@ public class OrderInfoDTO {
         this.sign_type = sign_type;
     }
 
-    public String getOpenId() {
-        return openId;
+    public String getOpenid() {
+        return openid;
     }
 
-    public void setOpenId(String openId) {
-        this.openId = openId;
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
     public String getAppid() {

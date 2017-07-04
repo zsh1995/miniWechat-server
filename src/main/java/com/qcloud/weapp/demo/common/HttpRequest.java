@@ -3,6 +3,8 @@ package com.qcloud.weapp.demo.common;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -27,6 +29,9 @@ public class HttpRequest {
 
     //传输超时时间，默认30秒
     private static final int connectTimeout = 30000;
+
+	static Log log = LogFactory.getLog(HttpRequest.class);
+
 	/**
 	 * post请求
 	 * @throws IOException 
@@ -37,9 +42,9 @@ public class HttpRequest {
 	 * @throws UnrecoverableKeyException 
 	 */
 	public static String sendPost(String url, Object xmlObj) throws ClientProtocolException, IOException, UnrecoverableKeyException, KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-		
 
-        
+
+
 		HttpPost httpPost = new HttpPost(url);
 		//解决XStream对出现双下划线的bug
         XStream xStreamForRequestPostData = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
@@ -47,6 +52,7 @@ public class HttpRequest {
         //将要提交给API的数据对象转换成XML格式数据Post给API
         String postDataXML = xStreamForRequestPostData.toXML(xmlObj);
 
+        log.error("xml=:"+postDataXML);
         //得指明使用UTF-8编码，否则到API服务器XML的中文不能被成功识别
         StringEntity postEntity = new StringEntity(postDataXML, "UTF-8");
         httpPost.addHeader("Content-Type", "text/xml");

@@ -4,9 +4,9 @@ public class Configure {
 	private static String key = "17JUWdcTzCN7MphU2e3AnC20QhTWV1OE";
 
 	//小程序ID	
-	private static String appID = "wx8e1d7f4f0591754";
+	private static String appID = "wx8ef1d7f4f0591754";
 	//商户号
-	private static String mch_id = "1482678932@1482678932";
+	private static String mch_id = "1482678932";
 	//
 	private static String secret = "daab992ed773dfcd8c3023d06e04b1f6";
 

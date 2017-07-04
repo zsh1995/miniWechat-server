@@ -13,6 +13,8 @@ import com.qcloud.weapp.demo.dto.OrderInfoDTO;
 import com.qcloud.weapp.demo.dto.OrderReturnDTO;
 import com.qcloud.weapp.demo.dto.SignInfoDTO;
 import net.sf.json.JSONObject;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,8 +33,11 @@ import java.security.UnrecoverableKeyException;
 @WebServlet("/pay/payEncap")
 public class PayEncap extends HttpServlet{
 
+    Log log = LogFactory.getLog(this.getClass());
+
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         //获取openId
+
         LoginService service = new LoginService(request, response);
         String openId = "";
         try {
@@ -67,7 +72,7 @@ public class PayEncap extends HttpServlet{
             order.setSpbill_create_ip("10.105.248.161");
             order.setNotify_url("https://78662138.qcloud.la/gslm/weixinpay/PayResult");
             order.setTrade_type("JSAPI");
-            order.setOpenId(openId);
+            order.setOpenid(openId);
             order.setSign_type("MD5");
             //生成签名
             String sign = Signature.getSign(order);
@@ -85,6 +90,7 @@ public class PayEncap extends HttpServlet{
         try {
             result = HttpRequest.sendPost("https://api.mch.weixin.qq.com/pay/unifiedorder", orderInfoDTO);
             System.out.println(result);
+            log.error("----openId:"+orderInfoDTO.getOpenid());
             //L.info("---------下单返回:"+result);
             XStream xStream = new XStream();
             xStream.alias("xml", OrderReturnDTO.class);
