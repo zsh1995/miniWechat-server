@@ -2,12 +2,21 @@ package com.qcloud.weapp.demo.entity;
 
 public class PurchAnalyseRecord {
   private Long id;
-  private String openid;
-  private Long purch_star;
-  private Long purch_group;
+  private String openId;
+  private Long purchStar;
+  private Long purchGroup;
   private Long transaction;
-  private Long delete_flag;
-  private String create_time;
+  private Long deleteFlag;
+  private String createTime;
+  private String tradeNo;
+
+  public String getTradeNo() {
+    return tradeNo;
+  }
+
+  public void setTradeNo(String tradeNo) {
+    this.tradeNo = tradeNo;
+  }
 
   public Long getId() {
     return id;
@@ -17,28 +26,28 @@ public class PurchAnalyseRecord {
     this.id = id;
   }
 
-  public String getOpenid() {
-    return openid;
+  public String getOpenId() {
+    return openId;
   }
 
-  public void setOpenid(String openid) {
-    this.openid = openid;
+  public void setOpenId(String openId) {
+    this.openId = openId;
   }
 
-  public Long getPurch_star() {
-    return purch_star;
+  public Long getPurchStar() {
+    return purchStar;
   }
 
-  public void setPurch_star(Long purch_star) {
-    this.purch_star = purch_star;
+  public void setPurchStar(Long purchStar) {
+    this.purchStar = purchStar;
   }
 
-  public Long getPurch_group() {
-    return purch_group;
+  public Long getPurchGroup() {
+    return purchGroup;
   }
 
-  public void setPurch_group(Long purch_group) {
-    this.purch_group = purch_group;
+  public void setPurchGroup(Long purchGroup) {
+    this.purchGroup = purchGroup;
   }
 
   public Long getTransaction() {
@@ -49,19 +58,19 @@ public class PurchAnalyseRecord {
     this.transaction = transaction;
   }
 
-  public Long getDelete_flag() {
-    return delete_flag;
+  public Long getDeleteFlag() {
+    return deleteFlag;
   }
 
-  public void setDelete_flag(Long delete_flag) {
-    this.delete_flag = delete_flag;
+  public void setDeleteFlag(Long deleteFlag) {
+    this.deleteFlag = deleteFlag;
   }
 
-  public String getCreate_time() {
-    return create_time;
+  public String getCreateTime() {
+    return createTime;
   }
 
-  public void setCreate_time(String create_time) {
-    this.create_time = create_time;
+  public void setCreateTime(String createTime) {
+    this.createTime = createTime;
   }
 }

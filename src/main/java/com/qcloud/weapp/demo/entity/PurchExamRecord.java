@@ -2,12 +2,21 @@ package com.qcloud.weapp.demo.entity;
 
 public class PurchExamRecord {
   private Long id;
-  private String openid;
-  private Long purch_star;
-  private Long remain_times;
+  private String openId;
+  private Long purchStar;
+  private Long remainTimes;
   private Long transaction;
-  private Long delete_flag;
-  private String create_date;
+  private Long deleteFlag;
+  private String createDate;
+  private String tradeNo;
+
+  public String getTradeNo() {
+    return tradeNo;
+  }
+
+  public void setTradeNo(String tradeNo) {
+    this.tradeNo = tradeNo;
+  }
 
   public Long getId() {
     return id;
@@ -17,28 +26,28 @@ public class PurchExamRecord {
     this.id = id;
   }
 
-  public String getOpenid() {
-    return openid;
+  public String getOpenId() {
+    return openId;
   }
 
-  public void setOpenid(String openid) {
-    this.openid = openid;
+  public void setOpenId(String openId) {
+    this.openId = openId;
   }
 
-  public Long getPurch_star() {
-    return purch_star;
+  public Long getPurchStar() {
+    return purchStar;
   }
 
-  public void setPurch_star(Long purch_star) {
-    this.purch_star = purch_star;
+  public void setPurchStar(Long purchStar) {
+    this.purchStar = purchStar;
   }
 
-  public Long getRemain_times() {
-    return remain_times;
+  public Long getRemainTimes() {
+    return remainTimes;
   }
 
-  public void setRemain_times(Long remain_times) {
-    this.remain_times = remain_times;
+  public void setRemainTimes(Long remainTimes) {
+    this.remainTimes = remainTimes;
   }
 
   public Long getTransaction() {
@@ -49,19 +58,19 @@ public class PurchExamRecord {
     this.transaction = transaction;
   }
 
-  public Long getDelete_flag() {
-    return delete_flag;
+  public Long getDeleteFlag() {
+    return deleteFlag;
   }
 
-  public void setDelete_flag(Long delete_flag) {
-    this.delete_flag = delete_flag;
+  public void setDeleteFlag(Long deleteFlag) {
+    this.deleteFlag = deleteFlag;
   }
 
-  public String getCreate_date() {
-    return create_date;
+  public String getCreateDate() {
+    return createDate;
   }
 
-  public void setCreate_date(String create_date) {
-    this.create_date = create_date;
+  public void setCreateDate(String createDate) {
+    this.createDate = createDate;
   }
 }

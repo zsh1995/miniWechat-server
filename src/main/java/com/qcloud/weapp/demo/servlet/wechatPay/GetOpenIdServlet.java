@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by zsh1995 on 2017/6/26.
  */
-@WebServlet("/pay/getOpenid")
+@WebServlet("/pay/getOpenId")
 public class GetOpenIdServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

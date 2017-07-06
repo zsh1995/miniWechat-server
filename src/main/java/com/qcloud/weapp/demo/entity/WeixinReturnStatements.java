@@ -4,21 +4,21 @@ public class WeixinReturnStatements {
   private Long id;
   private String appid;
   private String attach;
-  private String bank_type;
-  private String fee_type;
-  private String is_subscribe;
-  private String mch_id;
-  private String nonce_str;
+  private String bankType;
+  private String feeType;
+  private String isSubscribe;
+  private String mchId;
+  private String nonceStr;
   private String openid;
-  private String out_trade_no;
-  private String result_code;
-  private String return_code;
+  private String outTradeNo;
+  private String resultCode;
+  private String returnCode;
   private String sign;
-  private String sub_mch_id;
-  private String time_end;
-  private String total_fee;
-  private String trade_type;
-  private String transaction_id;
+  private String subMchId;
+  private String timeEnd;
+  private String totalFee;
+  private String tradeType;
+  private String transactionId;
 
   public Long getId() {
     return id;
@@ -44,44 +44,44 @@ public class WeixinReturnStatements {
     this.attach = attach;
   }
 
-  public String getBank_type() {
-    return bank_type;
+  public String getBankType() {
+    return bankType;
   }
 
-  public void setBank_type(String bank_type) {
-    this.bank_type = bank_type;
+  public void setBankType(String bankType) {
+    this.bankType = bankType;
   }
 
-  public String getFee_type() {
-    return fee_type;
+  public String getFeeType() {
+    return feeType;
   }
 
-  public void setFee_type(String fee_type) {
-    this.fee_type = fee_type;
+  public void setFeeType(String feeType) {
+    this.feeType = feeType;
   }
 
-  public String getIs_subscribe() {
-    return is_subscribe;
+  public String getIsSubscribe() {
+    return isSubscribe;
   }
 
-  public void setIs_subscribe(String is_subscribe) {
-    this.is_subscribe = is_subscribe;
+  public void setIsSubscribe(String isSubscribe) {
+    this.isSubscribe = isSubscribe;
   }
 
-  public String getMch_id() {
-    return mch_id;
+  public String getMchId() {
+    return mchId;
   }
 
-  public void setMch_id(String mch_id) {
-    this.mch_id = mch_id;
+  public void setMchId(String mchId) {
+    this.mchId = mchId;
   }
 
-  public String getNonce_str() {
-    return nonce_str;
+  public String getNonceStr() {
+    return nonceStr;
   }
 
-  public void setNonce_str(String nonce_str) {
-    this.nonce_str = nonce_str;
+  public void setNonceStr(String nonceStr) {
+    this.nonceStr = nonceStr;
   }
 
   public String getOpenid() {
@@ -92,28 +92,28 @@ public class WeixinReturnStatements {
     this.openid = openid;
   }
 
-  public String getOut_trade_no() {
-    return out_trade_no;
+  public String getOutTradeNo() {
+    return outTradeNo;
   }
 
-  public void setOut_trade_no(String out_trade_no) {
-    this.out_trade_no = out_trade_no;
+  public void setOutTradeNo(String outTradeNo) {
+    this.outTradeNo = outTradeNo;
   }
 
-  public String getResult_code() {
-    return result_code;
+  public String getResultCode() {
+    return resultCode;
   }
 
-  public void setResult_code(String result_code) {
-    this.result_code = result_code;
+  public void setResultCode(String resultCode) {
+    this.resultCode = resultCode;
   }
 
-  public String getReturn_code() {
-    return return_code;
+  public String getReturnCode() {
+    return returnCode;
   }
 
-  public void setReturn_code(String return_code) {
-    this.return_code = return_code;
+  public void setReturnCode(String returnCode) {
+    this.returnCode = returnCode;
   }
 
   public String getSign() {
@@ -124,43 +124,43 @@ public class WeixinReturnStatements {
     this.sign = sign;
   }
 
-  public String getSub_mch_id() {
-    return sub_mch_id;
+  public String getSubMchId() {
+    return subMchId;
   }
 
-  public void setSub_mch_id(String sub_mch_id) {
-    this.sub_mch_id = sub_mch_id;
+  public void setSubMchId(String subMchId) {
+    this.subMchId = subMchId;
   }
 
-  public String getTime_end() {
-    return time_end;
+  public String getTimeEnd() {
+    return timeEnd;
   }
 
-  public void setTime_end(String time_end) {
-    this.time_end = time_end;
+  public void setTimeEnd(String timeEnd) {
+    this.timeEnd = timeEnd;
   }
 
-  public String getTotal_fee() {
-    return total_fee;
+  public String getTotalFee() {
+    return totalFee;
   }
 
-  public void setTotal_fee(String total_fee) {
-    this.total_fee = total_fee;
+  public void setTotalFee(String totalFee) {
+    this.totalFee = totalFee;
   }
 
-  public String getTrade_type() {
-    return trade_type;
+  public String getTradeType() {
+    return tradeType;
   }
 
-  public void setTrade_type(String trade_type) {
-    this.trade_type = trade_type;
+  public void setTradeType(String tradeType) {
+    this.tradeType = tradeType;
   }
 
-  public String getTransaction_id() {
-    return transaction_id;
+  public String getTransactionId() {
+    return transactionId;
   }
 
-  public void setTransaction_id(String transaction_id) {
-    this.transaction_id = transaction_id;
+  public void setTransactionId(String transactionId) {
+    this.transactionId = transactionId;
   }
 }

@@ -70,7 +70,14 @@ public class OptTemplate {
             }
             conn.setAutoCommit(false);
             int successNum = ppst.executeUpdate();
+
+            if(isGenerateKey){
+                ResultSet rs = ppst.getGeneratedKeys();
+                Long id = rs.getLong(1);
+                args[0] = id;
+            }
             conn.commit();
+
             if(successNum > 0 ){
                 successFlag = true;
             }
