@@ -38,4 +38,19 @@ public class PracticeServiceImpl implements PracticeService {
         }
 
     }
+
+    @Override
+    public List<QuestionDTO> getExamQuestion(int stars) {
+        QuestionDAO questionDAO = new QuestionDAO();
+        List<QuestionDTO> questions = new ArrayList<>();
+        switch (stars) {
+            case 1:
+                questions = questionDAO.getRandQuestionLove();
+            case 2:
+                questions = questionDAO.getRandQuestionSocial();
+            case 3:
+                questions = questionDAO.getRandQuestionWork();
+        }
+        return questions;
+    }
 }

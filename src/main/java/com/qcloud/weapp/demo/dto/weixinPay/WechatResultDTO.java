@@ -39,6 +39,16 @@ public class WechatResultDTO {
 
     private String transaction_id;
 
+    private String cash_fee;
+
+    public String getCash_fee() {
+        return cash_fee;
+    }
+
+    public void setCash_fee(String cash_fee) {
+        this.cash_fee = cash_fee;
+    }
+
     public String getAppid() {
         return appid;
     }

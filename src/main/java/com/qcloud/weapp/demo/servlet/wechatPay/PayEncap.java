@@ -4,14 +4,16 @@ import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
+import com.qcloud.weapp.demo.common.*;
+import com.qcloud.weapp.demo.dao.WechatPayDAO;
+import com.qcloud.weapp.demo.entity.PurchAnalyseRecord;
+import com.qcloud.weapp.demo.entity.PurchExamRecord;
+import com.qcloud.weapp.demo.util.JsonReader;
 import com.thoughtworks.xstream.XStream;
-import com.qcloud.weapp.demo.common.Configure;
-import com.qcloud.weapp.demo.common.HttpRequest;
-import com.qcloud.weapp.demo.common.RandomStringGenerator;
-import com.qcloud.weapp.demo.common.Signature;
 import com.qcloud.weapp.demo.dto.OrderInfoDTO;
 import com.qcloud.weapp.demo.dto.OrderReturnDTO;
 import com.qcloud.weapp.demo.dto.SignInfoDTO;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,6 +28,9 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.SimpleTimeZone;
 
 /**
  * Created by zsh1995 on 2017/6/26.
@@ -35,9 +40,20 @@ public class PayEncap extends HttpServlet{
 
     Log log = LogFactory.getLog(this.getClass());
 
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        //获取openId
+    WechatPayDAO payDAO = new WechatPayDAO();
 
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+        JSONObject jsonObject = JsonReader.receivePost(request);
+        int type = (int) jsonObject.get("type");
+        int star = (int) jsonObject.get("star");
+        int groupId = 0;
+        int questionId = 0;
+        if(ApiConst.PURCH_TYPE_ANALYSE == type){
+            groupId = (int) jsonObject.get("groupId");
+            questionId = (int) jsonObject.get("questionId");
+        }
+        //获取openId
         LoginService service = new LoginService(request, response);
         String openId = "";
         try {
@@ -49,10 +65,29 @@ public class PayEncap extends HttpServlet{
             e.printStackTrace();
         }
 
+        if("".equals(openId)){
+            JSONObject result = new JSONObject();
+            result.put("code", 1);
+            result.put("message", "erro");
+        }
+
         //生成商户订单
-        OrderInfoDTO orderInfoDTO = generateOrder(openId);
+        OrderInfoDTO orderInfoDTO = generateOrder(openId,type,star);
         //调用Wechat下单接口
         OrderReturnDTO orderReturnDTO = prePay(orderInfoDTO);
+        //写入数据库
+        //todo:写入数据库
+        //先从其他DTO获取数据
+        if(ApiConst.PURCH_TYPE_ANALYSE == type){
+
+        } else if(ApiConst.PURCH_TYPE_EXAM == type){
+            PurchExamRecord record = packageRecord(openId,star,orderInfoDTO.getOut_trade_no());
+            log.error("Out_trade_no="+record.getTradeNo());
+            Long id = payDAO.insertNewExamPayRecord(record);
+            log.error("payDao return : " + id);
+        }
+        //将封装好的数据写库
+
         //组合数据并签名返回小程序
         response.getWriter().write(
                 resignData(orderReturnDTO.getPrepay_id()).toString()
@@ -60,15 +95,20 @@ public class PayEncap extends HttpServlet{
 
     }
 
-    private OrderInfoDTO generateOrder(String openId){
+    private OrderInfoDTO generateOrder(String openId,int type,int star){
         try {
             OrderInfoDTO order = new OrderInfoDTO();
             order.setAppid(Configure.getAppID());
             order.setMch_id(Configure.getMch_id());
             order.setNonce_str(RandomStringGenerator.getRandomStringByLength(32));
             order.setBody("dfdfdf");
-            order.setOut_trade_no(RandomStringGenerator.getRandomStringByLength(32));
-            order.setTotal_fee(10);
+            if(ApiConst.PURCH_TYPE_EXAM == type){
+                order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_EXAM,star));
+            }else if(ApiConst.PURCH_TYPE_ANALYSE == type){
+                order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_ANALYSE,star,0,0));
+            }
+            //order.setOut_trade_no(RandomStringGenerator.getRandomStringByLength(32));
+            order.setTotal_fee(1);
             order.setSpbill_create_ip("10.105.248.161");
             order.setNotify_url("https://78662138.qcloud.la/gslm/weixinpay/PayResult");
             order.setTrade_type("JSAPI");
@@ -84,6 +124,46 @@ public class PayEncap extends HttpServlet{
             return null;
         }
     }
+
+    private String generateOutTradeNo(int type,int star){
+        SimpleDateFormat sdf = new SimpleDateFormat(ApiConst.FORMATE_DATE);
+        StringBuffer sb = new StringBuffer();
+        sb.append(sdf.format(new Date()))
+                .append("E")
+                .append(star)
+                .append(RandomStringGenerator.getRandomStringByLength(22));
+        return sb.toString();
+    }
+
+    private String generateOutTradeNo(int type,int star,int grouId,int questionId){
+        SimpleDateFormat sdf = new SimpleDateFormat(ApiConst.FORMATE_DATE);
+        StringBuffer sb = new StringBuffer();
+        sb.append(sdf.format(new Date()))
+                .append("A")
+                .append(star)
+                .append(RandomStringGenerator.getRandomStringByLength(22));
+        return sb.toString();
+    }
+
+    private PurchExamRecord packageRecord(String openId,int star,String tradeNo){
+        PurchExamRecord record = new PurchExamRecord();
+        record.setOpenId(openId);
+        record.setPurchStar(star);
+        record.setTradeNo(tradeNo);
+        record.setTransaction(0);
+        return record;
+    }
+
+    private PurchAnalyseRecord packageRecord(String openId,int star,int groupId,int questionId,String tradeNo){
+        PurchAnalyseRecord record = new PurchAnalyseRecord();
+        record.setOpenId(openId);
+        record.setPurchStar(star);
+        record.setPurchGroup(groupId);
+        record.setQuestionId(questionId);
+        record.setTradeNo(tradeNo);
+        return record;
+    }
+
 
     private OrderReturnDTO prePay(OrderInfoDTO orderInfoDTO){
         String result = null;

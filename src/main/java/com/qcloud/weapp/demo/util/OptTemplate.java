@@ -1,6 +1,8 @@
 package com.qcloud.weapp.demo.util;
 
 import com.qcloud.weapp.demo.db.DBConnection;
+import com.qcloud.weapp.demo.servlet.wechatPay.PayResult;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.List;
  * Created by zsh1995 on 2017/6/16.
  */
 public class OptTemplate {
+    private static final Logger L = Logger.getLogger(PayResult.class);
+
     public Object find(String sql, Object[] args,ObjectMapper mapper){
         Object resultObj = null;
         Connection conn = null;
@@ -73,16 +77,22 @@ public class OptTemplate {
 
             if(isGenerateKey){
                 ResultSet rs = ppst.getGeneratedKeys();
-                Long id = rs.getLong(1);
-                args[0] = id;
+                if(rs.next()){
+                    Long id = rs.getLong(1);
+                    args[0] = id;
+                }
             }
             conn.commit();
 
             if(successNum > 0 ){
+                L.error("sql:"+successNum);
                 successFlag = true;
             }
         } catch (SQLException e) {
+            L.error("sqlerro:",e);
             e.printStackTrace();
+
+
         }finally {
             closeAll(conn,ppst);
         }

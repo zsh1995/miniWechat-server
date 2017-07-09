@@ -16,6 +16,7 @@ public interface PracticeService {
      */
     List<PracticeRecordDTO> getRecord(String openId, int stars);
     List<QuestionDTO> getDatas(int stars, int groupId);
+    List<QuestionDTO> getExamQuestion(int stars);
 
 
 

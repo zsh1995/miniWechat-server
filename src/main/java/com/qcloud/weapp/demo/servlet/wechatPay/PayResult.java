@@ -7,10 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.qcloud.weapp.demo.common.MapperTools;
 import com.qcloud.weapp.demo.common.StreamUtil;
+import com.qcloud.weapp.demo.dao.WechatPayDAO;
 import com.qcloud.weapp.demo.dto.OrderReturnDTO;
 import com.qcloud.weapp.demo.dto.weixinPay.WechatResult;
 import com.qcloud.weapp.demo.dto.weixinPay.WechatResultDTO;
+import com.qcloud.weapp.demo.entity.PurchExamRecord;
+import com.qcloud.weapp.demo.entity.WeixinReturnStatements;
 import com.thoughtworks.xstream.XStream;
 import org.apache.log4j.Logger;
 
@@ -22,7 +26,9 @@ import org.apache.log4j.Logger;
 public class PayResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger L = Logger.getLogger(PayResult.class);
-       
+
+	WechatPayDAO payDAO = new WechatPayDAO();
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,6 +49,15 @@ public class PayResult extends HttpServlet {
 		XStream xStream = new XStream();
 		xStream.alias("xml", WechatResultDTO.class);
 		WechatResultDTO returnInfo = (WechatResultDTO)xStream.fromXML(reqParams);
+		//写库
+		WeixinReturnStatements statements = MapperTools.entityToDTO(WeixinReturnStatements.class,returnInfo);
+		L.info("mapper result:"+statements.getAppid()+","+statements.getBankType());
+		payDAO.insertNewPayReturn(statements);
+		PurchExamRecord purchExamRecord = new PurchExamRecord();
+		purchExamRecord.setTransaction(1);
+		purchExamRecord.setRemainTimes(6);
+		purchExamRecord.setTradeNo(returnInfo.getOut_trade_no());
+		payDAO.setExamPayRecordStatus(purchExamRecord);
 		StringBuffer sb = new StringBuffer("<xml><return_code>SUCCESS</return_code><return_msg>OK</return_msg></xml>");
 		response.getWriter().append(sb.toString());
 	}

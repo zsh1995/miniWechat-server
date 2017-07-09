@@ -54,4 +54,27 @@ public class QuestionDAO {
         return count;
     }
 
+    public List<QuestionDTO> getRandQuestionWork(){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content FROM wechat_questions_work wqw ORDER BY  RAND() LIMIT 6";
+        Object[] args={};
+        return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
+    public List<QuestionDTO> getRandQuestionLove(){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content FROM wechat_questions_love wqw ORDER BY  RAND() LIMIT 6";
+        Object[] args={};
+        return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
+    public List<QuestionDTO> getRandQuestionSocial(){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content FROM wechat_questions_social wqw ORDER BY  RAND() LIMIT 6";
+        Object[] args={};
+        return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
+    }
+
+
+
 }

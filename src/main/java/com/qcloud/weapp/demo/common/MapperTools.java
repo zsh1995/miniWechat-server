@@ -1,5 +1,11 @@
 package com.qcloud.weapp.demo.common;
 
+import com.qcloud.weapp.demo.dto.weixinPay.WechatResultDTO;
+import com.qcloud.weapp.demo.entity.WeixinReturnStatements;
+import com.qcloud.weapp.demo.servlet.wechatPay.PayResult;
+import org.apache.log4j.Logger;
+
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
@@ -12,7 +18,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/4.
  */
 public class MapperTools {
-
+    private static final Logger L = Logger.getLogger(MapperTools.class);
     /**
      *
      * @方法名 ：rsMapEntity<br>
@@ -38,10 +44,11 @@ public class MapperTools {
                 t = clazz.newInstance();
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     temp = rsmd.getColumnName(i);
+                    String javaName = StringHelper.toJavaAttributeName(temp);
+                    Field field = clazz.getField(javaName);
                     s = clazz.getDeclaredMethod(StringHelper
-                            .asserSetMethodName(StringHelper
-                                    .toJavaAttributeName(temp)), String.class);
-                    s.invoke(t, rs.getString(temp));
+                            .asserSetMethodName(javaName),field.getType());
+                    s.invoke(t, rs.getObject(temp));
                 }
             }
         } catch (SQLException e) {
@@ -58,9 +65,45 @@ public class MapperTools {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
         }
         return t;
     }
+
+
+    public static <T> T entityToDTO(Class<T> clazz, Object srcType) {
+        try {
+            T returnObj = clazz.newInstance();
+            Field[] fields = srcType.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                String fieldName = field.getName();
+                Class fieldType = field.getType();
+                String newName = StringHelper.toJavaAttributeName(fieldName);
+                Method s = returnObj.getClass().getDeclaredMethod(StringHelper
+                        .asserSetMethodName(newName),fieldType);
+                Method g = srcType.getClass().getDeclaredMethod(
+                        StringHelper.asserGetMethodName(fieldName)
+                );
+                s.invoke(returnObj,g.invoke(srcType));
+            }
+            return returnObj;
+        }catch (NoSuchMethodException e){
+            e.printStackTrace();
+            L.error(e);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            L.error(e);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+            L.error(e);
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            L.error(e);
+        }
+        return null;
+    }
+
 
     /**
      *
@@ -89,10 +132,11 @@ public class MapperTools {
                 t = clazz.newInstance();
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     temp = rsmd.getColumnName(i);
+                    String javaName = StringHelper.toJavaAttributeName(temp);
+                    Field field = clazz.getField(javaName);
                     s = clazz.getDeclaredMethod(StringHelper
-                            .asserSetMethodName(StringHelper
-                                    .toJavaAttributeName(temp)), String.class);
-                    s.invoke(t, rs.getString(temp));
+                            .asserSetMethodName(javaName),field.getType());
+                    s.invoke(t, rs.getObject(temp));
                 }
                 list.add(t);
             }
@@ -110,8 +154,20 @@ public class MapperTools {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
         }
         return list;
+    }
+
+    public static void main(String[] args){
+        WechatResultDTO returnInfo = new WechatResultDTO();
+        returnInfo.setAppid("123");
+        returnInfo.setAttach("1243");
+        returnInfo.setBank_type("1231");
+        WeixinReturnStatements returnStatements = MapperTools.entityToDTO(WeixinReturnStatements.class,returnInfo);
+        System.out.print(returnStatements.getBankType());
+
     }
 
 }

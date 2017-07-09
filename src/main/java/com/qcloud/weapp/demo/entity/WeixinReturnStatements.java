@@ -19,6 +19,15 @@ public class WeixinReturnStatements {
   private String totalFee;
   private String tradeType;
   private String transactionId;
+  private String cashFee;
+
+  public String getCashFee() {
+    return cashFee;
+  }
+
+  public void setCashFee(String cashFee) {
+    this.cashFee = cashFee;
+  }
 
   public Long getId() {
     return id;

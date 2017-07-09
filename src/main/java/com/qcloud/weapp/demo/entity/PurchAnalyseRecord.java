@@ -3,12 +3,21 @@ package com.qcloud.weapp.demo.entity;
 public class PurchAnalyseRecord {
   private Long id;
   private String openId;
-  private Long purchStar;
-  private Long purchGroup;
-  private Long transaction;
-  private Long deleteFlag;
+  private Integer purchStar;
+  private Integer purchGroup;
+  private Integer questionId;
+  private Integer transaction;
+  private Integer deleteFlag;
   private String createTime;
   private String tradeNo;
+
+  public Integer getQuestionId() {
+    return questionId;
+  }
+
+  public void setQuestionId(Integer questionId) {
+    this.questionId = questionId;
+  }
 
   public String getTradeNo() {
     return tradeNo;
@@ -34,35 +43,35 @@ public class PurchAnalyseRecord {
     this.openId = openId;
   }
 
-  public Long getPurchStar() {
+  public Integer getPurchStar() {
     return purchStar;
   }
 
-  public void setPurchStar(Long purchStar) {
+  public void setPurchStar(Integer purchStar) {
     this.purchStar = purchStar;
   }
 
-  public Long getPurchGroup() {
+  public Integer getPurchGroup() {
     return purchGroup;
   }
 
-  public void setPurchGroup(Long purchGroup) {
+  public void setPurchGroup(Integer purchGroup) {
     this.purchGroup = purchGroup;
   }
 
-  public Long getTransaction() {
+  public Integer getTransaction() {
     return transaction;
   }
 
-  public void setTransaction(Long transaction) {
+  public void setTransaction(Integer transaction) {
     this.transaction = transaction;
   }
 
-  public Long getDeleteFlag() {
+  public Integer getDeleteFlag() {
     return deleteFlag;
   }
 
-  public void setDeleteFlag(Long deleteFlag) {
+  public void setDeleteFlag(Integer deleteFlag) {
     this.deleteFlag = deleteFlag;
   }
 
