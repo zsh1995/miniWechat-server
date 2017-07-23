@@ -16,4 +16,8 @@ public class ApiConst {
 
     public static final int PURCH_TYPE_ANALYSE = 1;
 
+    public static final int PASS_EXAM = 0;
+
+    public static final int FAIL_EXAM = 1;
+
 }

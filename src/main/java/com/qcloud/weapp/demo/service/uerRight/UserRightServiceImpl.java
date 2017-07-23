@@ -17,10 +17,11 @@ public class UserRightServiceImpl implements UserRightService {
         WechatUserRight userInformation = new WechatUserRight();
         userInformation.setOpenId(openId);
         userInformation.setQuestionId(questionId);
-        userInformation.setStar(star);;
+        userInformation.setStar(star);
 
         if(ApiConst.PURCH_TYPE_EXAM == type){
 
+            userInformation.setType(ApiConst.RIGHT_TYPE_EXAM);
             //查询用户权限信息
             Integer remainTimes = userDAO.selecteUserRightRemainTimes(userInformation);
             if(remainTimes == null){
@@ -29,6 +30,7 @@ public class UserRightServiceImpl implements UserRightService {
             return remainTimes;
         } else if(ApiConst.PURCH_TYPE_ANALYSE == type){
             //
+            userInformation.setType(ApiConst.RIGHT_TYPE_ANALYSE);
             Integer returnId = userDAO.selecteUserRightAnalyse(userInformation);
             if(returnId == null){
                 returnId = 0;
@@ -69,6 +71,28 @@ public class UserRightServiceImpl implements UserRightService {
         userRight.setOpenId(openId);
         userRight.setQuestionId(questionId);
         return userDAO.insertNewUserRight(userRight);
+    }
+
+    @Override
+    public boolean inserUserRight(String openId, String tradeNo) {
+        return userDAO.insertUserRightByPurchedInfo(openId,tradeNo);
+    }
+
+    @Override
+    public boolean updateUserExamStatus(String openId, String type, int star, int passExam) {
+        WechatUserRight userRight = new WechatUserRight();
+        userRight.setOpenId(openId);
+        userRight.setType(type);
+        userRight.setPassExam(passExam);
+        userRight.setStar(star);
+        return userDAO.updateUserRightExamStatus(userRight);
+    }
+
+    @Override
+    public int getExamStatus(String openId, int star) throws Exception {
+        Integer passExam = userDAO.getExamStatus(openId,star);
+        if(passExam == null){ throw new Exception("当前用户未购买");}
+        return passExam;
     }
 
 

@@ -6,9 +6,27 @@ public class PurchExamRecord {
   private Integer purchStar;
   private Integer remainTimes;
   private Integer transaction;
+  private Integer purchQuestionId;
+  private String type;
   private Integer deleteFlag;
   private String createDate;
   private String tradeNo;
+
+  public Integer getPurchQuestionId() {
+    return purchQuestionId;
+  }
+
+  public void setPurchQuestionId(Integer purchQuestionId) {
+    this.purchQuestionId = purchQuestionId;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
 
   public String getTradeNo() {
     return tradeNo;

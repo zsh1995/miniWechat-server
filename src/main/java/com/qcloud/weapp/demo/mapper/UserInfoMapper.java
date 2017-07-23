@@ -22,6 +22,12 @@ public class UserInfoMapper implements ObjectMapper {
         userInfoDTO.setSchool((String) safeResultGet(set,"school"));
         userInfoDTO.setMajor((String) safeResultGet(set,"major"));
         userInfoDTO.setPhoneNumber((String) safeResultGet(set,"phone_number"));
+        userInfoDTO.setPost( (String) safeResultGet(set,"post"));
+        userInfoDTO.setType( (String) safeResultGet(set,"type"));
+        userInfoDTO.setCity( (String) safeResultGet(set,"city"));
+        userInfoDTO.setGender( (String) safeResultGet(set,"gender"));
+        userInfoDTO.setCompany( (String) safeResultGet(set,"company"));
+        userInfoDTO.setWanted_company((String) safeResultGet(set,"wanted_company"));
         return userInfoDTO;
     }
     private Object safeResultGet(ResultSet set, String columnLabel){

@@ -15,6 +15,8 @@ import com.qcloud.weapp.demo.dto.weixinPay.WechatResult;
 import com.qcloud.weapp.demo.dto.weixinPay.WechatResultDTO;
 import com.qcloud.weapp.demo.entity.PurchExamRecord;
 import com.qcloud.weapp.demo.entity.WeixinReturnStatements;
+import com.qcloud.weapp.demo.service.uerRight.UserRightService;
+import com.qcloud.weapp.demo.service.uerRight.UserRightServiceImpl;
 import com.thoughtworks.xstream.XStream;
 import org.apache.log4j.Logger;
 
@@ -29,6 +31,7 @@ public class PayResult extends HttpServlet {
 
 	WechatPayDAO payDAO = new WechatPayDAO();
 
+	UserRightService userRightService = new UserRightServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -58,6 +61,7 @@ public class PayResult extends HttpServlet {
 		purchExamRecord.setRemainTimes(6);
 		purchExamRecord.setTradeNo(returnInfo.getOut_trade_no());
 		payDAO.setExamPayRecordStatus(purchExamRecord);
+		userRightService.inserUserRight(purchExamRecord.getOpenId(),purchExamRecord.getTradeNo());
 		StringBuffer sb = new StringBuffer("<xml><return_code>SUCCESS</return_code><return_msg>OK</return_msg></xml>");
 		response.getWriter().append(sb.toString());
 	}

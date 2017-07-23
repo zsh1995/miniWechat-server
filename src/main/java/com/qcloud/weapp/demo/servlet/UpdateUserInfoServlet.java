@@ -23,6 +23,16 @@ import java.io.IOException;
 @WebServlet("/userInfo/updateUserInfo")
 public class UpdateUserInfoServlet extends HttpServlet {
 
+
+
+    String saveGet(JSONObject jsonObject,String key){
+        try{
+            return jsonObject.getString(key);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
     UserInfoService userInfoService = new UserInfoServiceImpl();
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginService service = new LoginService(request, response);
@@ -31,10 +41,17 @@ public class UpdateUserInfoServlet extends HttpServlet {
             UserInfo userInfo  = service.check();
             userInfoDTO.setOpenId(userInfo.getOpenId());
             JSONObject jsonObject = JsonReader.receivePost(request);
-            userInfoDTO.setPhoneNumber(jsonObject.getString("userMobile"));
-            userInfoDTO.setMajor(jsonObject.getString("major"));
-            userInfoDTO.setSchool(jsonObject.getString("school"));
-            userInfoDTO.setStudent_name(jsonObject.getString("userName"));
+            userInfoDTO.setPhoneNumber(saveGet(jsonObject,"userMobile"));
+            userInfoDTO.setMajor(saveGet(jsonObject,"major"));
+            userInfoDTO.setSchool(saveGet(jsonObject,"school"));
+            userInfoDTO.setStudent_name(saveGet(jsonObject,"userName"));
+            userInfoDTO.setPost(saveGet(jsonObject,"post"));
+            userInfoDTO.setType(saveGet(jsonObject,"type"));
+            userInfoDTO.setCity(saveGet(jsonObject,"city"));
+            userInfoDTO.setGender(saveGet(jsonObject,"gender"));
+            userInfoDTO.setCompany(saveGet(jsonObject,"company"));
+            userInfoDTO.setWanted_company(saveGet(jsonObject,"wanted_company"));
+
             userInfoService.updateUserInfo(userInfoDTO);
         } catch (LoginServiceException e) {
             e.printStackTrace();

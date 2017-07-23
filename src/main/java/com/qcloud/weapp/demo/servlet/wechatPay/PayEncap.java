@@ -78,14 +78,17 @@ public class PayEncap extends HttpServlet{
         //写入数据库
         //todo:写入数据库
         //先从其他DTO获取数据
+        PurchExamRecord record = packageRecord(openId,star,orderInfoDTO.getOut_trade_no());
+        log.error("Out_trade_no="+record.getTradeNo());
         if(ApiConst.PURCH_TYPE_ANALYSE == type){
-
+            record.setType(ApiConst.RIGHT_TYPE_ANALYSE);
+            record.setPurchQuestionId(questionId);
         } else if(ApiConst.PURCH_TYPE_EXAM == type){
-            PurchExamRecord record = packageRecord(openId,star,orderInfoDTO.getOut_trade_no());
-            log.error("Out_trade_no="+record.getTradeNo());
-            Long id = payDAO.insertNewExamPayRecord(record);
-            log.error("payDao return : " + id);
+            record.setType(ApiConst.RIGHT_TYPE_EXAM);
+            record.setPurchStar(star);
         }
+        Long id = payDAO.insertNewExamPayRecord(record);
+        log.debug("payDao return : " + id);
         //将封装好的数据写库
 
         //组合数据并签名返回小程序

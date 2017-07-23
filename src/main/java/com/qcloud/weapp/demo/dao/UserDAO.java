@@ -23,7 +23,7 @@ public class UserDAO {
 
     public UserInfoDTO getUserInfo(String openId){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT student_name,school,major,phone_number FROM wechat_userinfo WHERE openid = ?";
+        String sql = "SELECT student_name,school,major,phone_number,post,type,city,gender,company,wanted_company FROM wechat_userinfo WHERE openid = ?";
         String[] args = {openId};
         return (UserInfoDTO) optTemplate.find(sql,args,new UserInfoMapper());
     }
@@ -31,10 +31,12 @@ public class UserDAO {
     public boolean updateUserInfo(UserInfoDTO userInfo){
         OptTemplate optTemplate = new OptTemplate();
         String sql = "UPDATE wechat_userinfo\n" +
-                "SET student_name =?,school =?,major = ?,phone_number = ?\n" +
+                "SET student_name =?,school =?,major = ?,phone_number = ?,post= ?,type= ?,city= ?,gender= ?,company= ?,wanted_company= ?\n" +
                 "WHERE\n" +
                 "	openId =?";
-        String[] args = {userInfo.getStudent_name(),userInfo.getSchool(),userInfo.getMajor(),userInfo.getPhoneNumber(),userInfo.getOpenId()};
+        String[] args = {userInfo.getStudent_name(),userInfo.getSchool(),userInfo.getMajor(),userInfo.getPhoneNumber(),
+                userInfo.getPost(),userInfo.getType(),userInfo.getCity(),userInfo.getGender(),userInfo.getCompany(),userInfo.getWanted_company(),
+                userInfo.getOpenId()};
         return optTemplate.update(sql,args,false);
     }
 
@@ -65,26 +67,65 @@ public class UserDAO {
         throw new Exception("参数错误");
     }
 
+    public boolean insertUserRightByPurchedInfo(String openId,String tradeNo){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "INSERT INTO wechat_user_right (openId, type, star, questionId, remain_times , create_time) (SELECT openId, per.type, per.purch_star, per.purch_question_id, dt.dict_value , NOW() FROM purch_exam_record per LEFT JOIN dict_table dt ON dt.dict_name = 'TIMES_PER_PURCH' WHERE per.trade_no = ? ) ON DUPLICATE KEY UPDATE remain_times = dt.dict_value,passExam = 0";
+        Object[] args = {tradeNo};
+        return optTemplate.update(sql,args,false);
+    }
+
 
     public boolean updateUserRightRemainTimes(WechatUserRight userRight){
         OptTemplate optTemplate = new OptTemplate();
         String sql = "UPDATE wechat_user_right\n" +
                 "SET remain_times =?\n" +
                 "WHERE\n" +
-                "	openId =? AND type = ?";
-        Object[] args = {userRight.getRemainTimes(),userRight.getOpenId(),userRight.getType()};
+                "	openId =? AND type = ? AND star = ?";
+        Object[] args = {userRight.getRemainTimes(),userRight.getOpenId(),userRight.getType(),userRight.getStar()};
         return optTemplate.update(sql,args,false);
     }
 
-    public Integer selecteUserRightRemainTimes(WechatUserRight userRight){
+    public boolean updateUserRightExamStatus(WechatUserRight userRight){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT remain_times FROM wechat_user_right WHERE openId = ? AND type = ?";
-        Object[] args = {};
+        String sql = "UPDATE wechat_user_right\n" +
+                "SET passExam =passExam+1\n" +
+                "WHERE\n" +
+                "	openId =? AND type = ? AND star = ?";
+        Object[] args = {userRight.getOpenId(),userRight.getType(),userRight.getStar()};
+        return optTemplate.update(sql,args,false);
+    }
+
+    public Integer getExamStatus(String openId,int star){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql ="SELECT passExam FROM wechat_user_right WHERE openId = ? AND star = ? AND type = 'exam' ";
+        Object[] args ={openId,star};
         return (Integer) optTemplate.find(sql, args, new ObjectMapper() {
             @Override
             public Object mapping(ResultSet set) {
+                Integer intNum ;
                 try {
-                    set.getInt("remain_times");
+                    intNum = set.getInt("passExam");
+                    return intNum;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        });
+    }
+
+
+    public Integer selecteUserRightRemainTimes(WechatUserRight userRight){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT remain_times FROM wechat_user_right WHERE openId = ? AND type = ? AND star = ?";
+        Object[] args = {userRight.getOpenId(),userRight.getType(),userRight.getStar()};
+        return (Integer) optTemplate.find(sql, args, new ObjectMapper() {
+            @Override
+            public Object mapping(ResultSet set) {
+                Integer intNum ;
+                try {
+                    intNum = set.getInt("remain_times");
+                    return intNum;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

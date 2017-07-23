@@ -6,8 +6,17 @@ public class WechatUserRight {
   private String type;
   private Integer questionId;
   private Integer star;
+  private Integer passExam;
   private Integer remainTimes;
   private String createTime;
+
+  public Integer getPassExam() {
+    return passExam;
+  }
+
+  public void setPassExam(Integer passExam) {
+    this.passExam = passExam;
+  }
 
   public Long getId() {
     return id;

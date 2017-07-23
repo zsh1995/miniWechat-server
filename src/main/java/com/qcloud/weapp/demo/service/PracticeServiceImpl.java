@@ -45,11 +45,11 @@ public class PracticeServiceImpl implements PracticeService {
         List<QuestionDTO> questions = new ArrayList<>();
         switch (stars) {
             case 1:
-                questions = questionDAO.getRandQuestionLove();
+                questions = questionDAO.getRandQuestionLove();break;
             case 2:
-                questions = questionDAO.getRandQuestionSocial();
+                questions = questionDAO.getRandQuestionSocial();break;
             case 3:
-                questions = questionDAO.getRandQuestionWork();
+                questions = questionDAO.getRandQuestionWork();break;
         }
         return questions;
     }

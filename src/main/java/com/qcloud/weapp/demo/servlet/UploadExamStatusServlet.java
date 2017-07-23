@@ -1,4 +1,4 @@
-package com.qcloud.weapp.demo.servlet.wechatPay;
+package com.qcloud.weapp.demo.servlet;
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
@@ -7,9 +7,8 @@ import com.qcloud.weapp.authorization.UserInfo;
 import com.qcloud.weapp.demo.service.uerRight.UserRightService;
 import com.qcloud.weapp.demo.service.uerRight.UserRightServiceImpl;
 import com.qcloud.weapp.demo.util.JsonReader;
-import net.sf.json.JSONObject;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,51 +18,41 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by Administrator on 2017/7/8.
+ * Created by Administrator on 2017/7/14.
  */
-@WebServlet("/pay/checkPurchRecord")
-public class CheckPurchRecordServlet extends HttpServlet{
-    Log log = LogFactory.getLog(this.getClass());
+@WebServlet("/exam/uploadStatus")
+public class UploadExamStatusServlet extends HttpServlet {
+    UserRightService userRightService = new UserRightServiceImpl();
 
-    /**
-     * in   :
-     *        type
-     *        star
-     *        questionId
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //
         LoginService service = new LoginService(request, response);
-        UserRightService userRightService = new UserRightServiceImpl();
-        //
+        JSONObject result = new JSONObject();
         try {
+            // 调用检查登录接口，成功后可以获得用户信息，进行正常的业务请求
             UserInfo userInfo = service.check();
-            JSONObject jsonObject = JsonReader.receivePost(request);
-            int type = (int) jsonObject.get("type");
+            net.sf.json.JSONObject jsonObject = JsonReader.receivePost(request);
             int star = (int) jsonObject.get("star");
-            int questionId = (int) jsonObject.get("questionId");
-            log.error("type:"+type+",star:"+star);
-            int remainTimes = userRightService.checkUserRight(userInfo.getOpenId(),type,star,questionId);
-            log.error("remainTimes:"+remainTimes);
-            JSONObject result = new JSONObject();
+            userRightService.updateUserExamStatus(userInfo.getOpenId(),
+                    "exam",
+                    star,
+                    0
+                    );
+            // 获取会话成功，输出获得的用户信息
             JSONObject data = new JSONObject();
+            data.put("userInfo", new JSONObject(userInfo));
             result.put("code", 0);
             result.put("message", "OK");
-            data.put("remainTime",remainTimes);
-            result.put("data",data);
+            result.put("data", data);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("utf-8");
             response.getWriter().write(result.toString());
         } catch (LoginServiceException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         } catch (ConfigurationException e) {
             e.printStackTrace();
-        } catch (Exception e) {
-            log.error(e.getMessage(),e);
         }
-
+        response.getWriter().write(result.toString());
     }
-
 }

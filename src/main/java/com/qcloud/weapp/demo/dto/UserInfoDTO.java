@@ -21,6 +21,66 @@ public class UserInfoDTO {
 
     private String major;
 
+    private String post;
+
+    private String type;
+
+    private String city;
+
+    private String gender;
+
+    private String company;
+
+    private String wanted_company;
+
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getWanted_company() {
+        return wanted_company;
+    }
+
+    public void setWanted_company(String wanted_company) {
+        this.wanted_company = wanted_company;
+    }
 
     public String getSchool() {
         return school;
