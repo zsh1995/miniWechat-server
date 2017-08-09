@@ -12,7 +12,7 @@ public class UserRightServiceImpl implements UserRightService {
     UserDAO userDAO = new UserDAO();
 
     @Override
-    public int checkUserRight(String openId,int type, int star, int questionId) throws Exception {
+    public int checkUserRight(String openId, int type, int star, int questionId) throws Exception {
 
         WechatUserRight userInformation = new WechatUserRight();
         userInformation.setOpenId(openId);
@@ -31,11 +31,12 @@ public class UserRightServiceImpl implements UserRightService {
         } else if(ApiConst.PURCH_TYPE_ANALYSE == type){
             //
             userInformation.setType(ApiConst.RIGHT_TYPE_ANALYSE);
-            Integer returnId = userDAO.selecteUserRightAnalyse(userInformation);
-            if(returnId == null){
-                returnId = 0;
+            Long returnId = userDAO.selecteUserRightAnalyse(userInformation);
+            int resultId = 0;
+            if(returnId != null){
+                resultId = returnId.intValue();
             }
-            return returnId;
+            return resultId;
         }
         throw new Exception("参数错误");
     }

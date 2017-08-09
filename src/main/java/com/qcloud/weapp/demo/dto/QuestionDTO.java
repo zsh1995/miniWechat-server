@@ -6,6 +6,10 @@ import java.util.List;
  * Created by Administrator on 2017/6/3.
  */
 public class QuestionDTO {
+    private Integer questionId;
+
+    private Integer isPurchAnalyse;
+
     private String content;
 
     private List<OptionsDTO> options;
@@ -15,6 +19,22 @@ public class QuestionDTO {
     private String tips;
 
     private String analyse;
+
+    public Integer getIsPurchAnalyse() {
+        return isPurchAnalyse;
+    }
+
+    public void setIsPurchAnalyse(Integer isPurchAnalyse) {
+        this.isPurchAnalyse = isPurchAnalyse;
+    }
+
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
 
     public String getContent() {
         return content;

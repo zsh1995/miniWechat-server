@@ -33,6 +33,25 @@ public class UserInfoDTO {
 
     private String wanted_company;
 
+    private String emailAddr;
+
+    private String invitor;
+
+    public String getEmailAddr() {
+        return emailAddr;
+    }
+
+    public void setEmailAddr(String emailAddr) {
+        this.emailAddr = emailAddr;
+    }
+
+    public String getInvitor() {
+        return invitor;
+    }
+
+    public void setInvitor(String invitor) {
+        this.invitor = invitor;
+    }
 
     public String getPost() {
         return post;

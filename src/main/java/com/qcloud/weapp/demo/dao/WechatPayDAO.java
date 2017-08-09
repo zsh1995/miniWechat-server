@@ -8,6 +8,10 @@ import com.qcloud.weapp.demo.util.ObjectMapper;
 import com.qcloud.weapp.demo.util.OptTemplate;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/6.
@@ -45,9 +49,9 @@ public class WechatPayDAO {
 
     public Long insertNewExamPayRecord(PurchExamRecord purchExamRecord){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "INSERT INTO purch_exam_record (openId,purch_star,type,trade_no,transaction,create_date) VALUE (?,?,?,?,?,NOW())";
+        String sql = "INSERT INTO purch_exam_record (openId,purch_star,type,trade_no,transaction,create_date,purch_question_id) VALUE (?,?,?,?,?,NOW(),?)";
         Object[] args = {purchExamRecord.getOpenId(),purchExamRecord.getPurchStar(),purchExamRecord.getType(),purchExamRecord.getTradeNo()
-                ,purchExamRecord.getTransaction()};
+                ,purchExamRecord.getTransaction(),purchExamRecord.getPurchQuestionId()};
         if(optTemplate.update(sql,args,true)){
             return (Long) args[0];
         }
@@ -72,6 +76,28 @@ public class WechatPayDAO {
             public Object mapping(ResultSet set) {
                 PurchExamRecord purchExamRecord = (PurchExamRecord) MapperTools.rsMapEntity(PurchExamRecord.class,set);
                 return purchExamRecord;
+            }
+        });
+    }
+
+    public List getPurchExamRecord(String openId){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT type,purch_question_id as questionId,purch_star,UNIX_TIMESTAMP(create_date) as date FROM purch_exam_record WHERE openId= ? AND delete_flag != 1 AND `transaction` = 1";
+        Object[] args={openId};
+        return optTemplate.query(sql, args, new ObjectMapper() {
+            @Override
+            public Object mapping(ResultSet set) {
+                Map data = new HashMap();
+                try {
+                    data.put("type",set.getString("type"));
+                    data.put("questionId",set.getInt("questionId"));
+                    data.put("purchStar",set.getString("purch_star"));
+                    data.put("date",set.getLong("date"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return data;
+
             }
         });
     }

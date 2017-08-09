@@ -9,11 +9,11 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    private static String db_url = "jdbc:mysql://10.66.217.225:3306/tinyProgram_BE?useUnicode=true&characterEncoding=utf-8&useSSL=true";
+    private static String db_url = "jdbc:mysql://10.66.196.3:3306/miniWechat_BE?useUnicode=true&characterEncoding=utf-8&useSSL=true";
 
-    private static String user_name="wechat_all";
+    private static String user_name="root";
 
-    private static String user_pwd="zsh19950314#";
+    private static String user_pwd="GSLM2017!";
 
     private static Connection conn= null;
 

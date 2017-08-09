@@ -25,7 +25,7 @@ public class ApiMethod {
 
     public static void formateResultWithExcp(JSONObject result,Exception e){
         result.put("code", 1);
-        result.put("message", e);
+        result.put("message", e.getMessage());
     }
 
 }

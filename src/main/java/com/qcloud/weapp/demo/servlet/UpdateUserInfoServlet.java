@@ -51,6 +51,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
             userInfoDTO.setGender(saveGet(jsonObject,"gender"));
             userInfoDTO.setCompany(saveGet(jsonObject,"company"));
             userInfoDTO.setWanted_company(saveGet(jsonObject,"wanted_company"));
+            userInfoDTO.setEmailAddr(saveGet(jsonObject,"emailAddr"));
 
             userInfoService.updateUserInfo(userInfoDTO);
         } catch (LoginServiceException e) {

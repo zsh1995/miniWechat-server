@@ -1,14 +1,12 @@
 package com.qcloud.weapp.demo.service.uerRight;
 
-import com.qcloud.weapp.demo.entity.WechatUserRight;
-
 /**
  * Created by Administrator on 2017/7/9.
  */
 public interface UserRightService {
 
     //查询用户权限信息
-    int checkUserRight(String openId,int type, int star, int questionId) throws Exception;
+    int checkUserRight(String openId, int type, int star, int questionId) throws Exception;
 
     //更新用户权限信息
     boolean updateUserRight(String openId,int star,int remainTimes);

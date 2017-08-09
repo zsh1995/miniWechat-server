@@ -1,6 +1,9 @@
 package com.qcloud.weapp.demo.servlet;
 
+import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
+import com.qcloud.weapp.authorization.LoginServiceException;
+import com.qcloud.weapp.authorization.UserInfo;
 import com.qcloud.weapp.demo.dto.OptionsDTO;
 import com.qcloud.weapp.demo.dto.QuestionDTO;
 import com.qcloud.weapp.demo.service.PracticeService;
@@ -45,19 +48,25 @@ public class QuestionServlet extends HttpServlet{
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         LoginService service = new LoginService(request, response);
-        JSONObject jsonObject = JsonReader.receivePost(request);
-        int stars = jsonObject.getInt("stars");
-        int groupId = jsonObject.getInt("groupId");
-        List<QuestionDTO> list = initDatas(practiceService.getDatas(stars,groupId));
-        //UserInfo userInfo = service.check();
         JSONObject result = new JSONObject();
-        JSONObject data = new JSONObject();
-        //data.put("userInfo", new JSONObject(userInfo));
-        JSONArray listArray = JSONArray.fromObject(list);
-        data.put("questionlist",listArray);
-        result.put("code", 0);
-        result.put("message", "OK");
-        result.put("data", data);
+
+        try {
+            UserInfo userInfo = service.check();
+            JSONObject jsonObject = JsonReader.receivePost(request);
+            int stars = jsonObject.getInt("stars");
+            int groupId = jsonObject.getInt("groupId");
+            List<QuestionDTO> list = initDatas(practiceService.getDatas(userInfo.getOpenId(),stars,groupId));
+            JSONObject data = new JSONObject();
+            JSONArray listArray = JSONArray.fromObject(list);
+            data.put("questionlist",listArray);
+            result.put("code", 0);
+            result.put("message", "OK");
+            result.put("data", data);
+        } catch (LoginServiceException e) {
+            e.printStackTrace();
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(result.toString());

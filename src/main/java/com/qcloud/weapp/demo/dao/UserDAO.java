@@ -9,6 +9,8 @@ import com.qcloud.weapp.demo.util.OptTemplate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/6/17.
@@ -23,19 +25,45 @@ public class UserDAO {
 
     public UserInfoDTO getUserInfo(String openId){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT student_name,school,major,phone_number,post,type,city,gender,company,wanted_company FROM wechat_userinfo WHERE openid = ?";
+        String sql = "SELECT wu1.id,wu1.student_name,wu1.school,wu1.major,wu1.phone_number,wu1.post,wu1.type,wu1.city,wu1.gender,wu1.company,wu1.wanted_company,IFNULL(wu2.student_name,wu2.wechat_nick) as invitor, wu1.emailAddr FROM wechat_userinfo wu1 LEFT JOIN wechat_userinfo wu2 ON wu2.id = wu1.invitor WHERE wu1.openid = ?";
         String[] args = {openId};
         return (UserInfoDTO) optTemplate.find(sql,args,new UserInfoMapper());
+    }
+
+    public Map selectInvitor(Long id){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT avatar_url ,IFNULL(student_name,wechat_nick) as name FROM wechat_userinfo WHERE id = ?";
+        Long[] args = {id};
+        return (Map) optTemplate.find(sql, args, new ObjectMapper() {
+            @Override
+            public Object mapping(ResultSet set) {
+                Map map = new HashMap();
+                try {
+                    map.put("avatar_url",set.getString("avatar_url"));
+                    map.put("name",set.getString("name"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return map;
+            }
+        });
+    }
+
+    public boolean updateInvitor(Long id,String openId){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "UPDATE wechat_userinfo SET invitor = ? WHERE openId = ?";
+        Object[] args = {id,openId};
+        return optTemplate.update(sql,args,false);
     }
 
     public boolean updateUserInfo(UserInfoDTO userInfo){
         OptTemplate optTemplate = new OptTemplate();
         String sql = "UPDATE wechat_userinfo\n" +
-                "SET student_name =?,school =?,major = ?,phone_number = ?,post= ?,type= ?,city= ?,gender= ?,company= ?,wanted_company= ?\n" +
+                "SET student_name =?,school =?,major = ?,phone_number = ?,post= ?,type= ?,city= ?,gender= ?,company= ?,wanted_company= ?,emailAddr=?\n" +
                 "WHERE\n" +
                 "	openId =?";
         String[] args = {userInfo.getStudent_name(),userInfo.getSchool(),userInfo.getMajor(),userInfo.getPhoneNumber(),
-                userInfo.getPost(),userInfo.getType(),userInfo.getCity(),userInfo.getGender(),userInfo.getCompany(),userInfo.getWanted_company(),
+                userInfo.getPost(),userInfo.getType(),userInfo.getCity(),userInfo.getGender(),userInfo.getCompany(),userInfo.getWanted_company(),userInfo.getEmailAddr(),
                 userInfo.getOpenId()};
         return optTemplate.update(sql,args,false);
     }
@@ -134,15 +162,15 @@ public class UserDAO {
         });
     }
 
-    public Integer selecteUserRightAnalyse(WechatUserRight userRight){
+    public Long selecteUserRightAnalyse(WechatUserRight userRight){
         OptTemplate optTemplate = new OptTemplate();
         String sql = "SELECT id FROM wechat_user_right WHERE openId = ? AND type = ? AND questionId = ?";
         Object[] args = {userRight.getOpenId(),userRight.getType(),userRight.getQuestionId()};
-        return (Integer) optTemplate.find(sql, args, new ObjectMapper() {
+        return (Long) optTemplate.find(sql, args, new ObjectMapper() {
             @Override
             public Object mapping(ResultSet set) {
                 try {
-                    set.getInt("id");
+                    return set.getLong("id");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -150,8 +178,6 @@ public class UserDAO {
             }
         });
     }
-
-
 
 
 }

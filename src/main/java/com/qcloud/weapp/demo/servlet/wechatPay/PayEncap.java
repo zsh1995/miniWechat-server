@@ -50,7 +50,6 @@ public class PayEncap extends HttpServlet{
         int groupId = 0;
         int questionId = 0;
         if(ApiConst.PURCH_TYPE_ANALYSE == type){
-            groupId = (int) jsonObject.get("groupId");
             questionId = (int) jsonObject.get("questionId");
         }
         //获取openId
@@ -72,7 +71,7 @@ public class PayEncap extends HttpServlet{
         }
 
         //生成商户订单
-        OrderInfoDTO orderInfoDTO = generateOrder(openId,type,star);
+        OrderInfoDTO orderInfoDTO = generateOrder(openId,type,star,questionId);
         //调用Wechat下单接口
         OrderReturnDTO orderReturnDTO = prePay(orderInfoDTO);
         //写入数据库
@@ -98,22 +97,37 @@ public class PayEncap extends HttpServlet{
 
     }
 
-    private OrderInfoDTO generateOrder(String openId,int type,int star){
+    private OrderInfoDTO generateOrder(String openId,int type,int star,int questionId){
+        StringBuilder bodyBuilder = new StringBuilder("高商联盟-");
+        int price = 0;
         try {
             OrderInfoDTO order = new OrderInfoDTO();
             order.setAppid(Configure.getAppID());
             order.setMch_id(Configure.getMch_id());
             order.setNonce_str(RandomStringGenerator.getRandomStringByLength(32));
-            order.setBody("dfdfdf");
+
             if(ApiConst.PURCH_TYPE_EXAM == type){
                 order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_EXAM,star));
+                price = 1;
+
+                switch (star){
+                    case 1:bodyBuilder.append("一星级考试");break;
+                    case 2:bodyBuilder.append("二星级考试");break;
+                    case 3:bodyBuilder.append("三星级考试");break;
+                }
+
             }else if(ApiConst.PURCH_TYPE_ANALYSE == type){
-                order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_ANALYSE,star,0,0));
+                order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_ANALYSE,star,0,questionId));
+                price = 1;
+                bodyBuilder.append("试题解析")
+                        .append("No")
+                        .append(questionId+",").append(star).append("星");
             }
+            order.setBody(bodyBuilder.toString());
             //order.setOut_trade_no(RandomStringGenerator.getRandomStringByLength(32));
-            order.setTotal_fee(1);
-            order.setSpbill_create_ip("10.105.248.161");
-            order.setNotify_url("https://78662138.qcloud.la/gslm/weixinpay/PayResult");
+            order.setTotal_fee(price);
+            order.setSpbill_create_ip("118.89.242.169");
+            order.setNotify_url("https://74043727.qcloud.la/gslm/weixinpay/PayResult");
             order.setTrade_type("JSAPI");
             order.setOpenid(openId);
             order.setSign_type("MD5");
@@ -174,7 +188,7 @@ public class PayEncap extends HttpServlet{
             result = HttpRequest.sendPost("https://api.mch.weixin.qq.com/pay/unifiedorder", orderInfoDTO);
             System.out.println(result);
             log.error("----openId:"+orderInfoDTO.getOpenid());
-            //L.info("---------下单返回:"+result);
+            log.info("---------下单返回:"+result);
             XStream xStream = new XStream();
             xStream.alias("xml", OrderReturnDTO.class);
             OrderReturnDTO returnInfo = (OrderReturnDTO)xStream.fromXML(result);

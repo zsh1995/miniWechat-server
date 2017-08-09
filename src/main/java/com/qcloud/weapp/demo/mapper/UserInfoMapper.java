@@ -28,6 +28,8 @@ public class UserInfoMapper implements ObjectMapper {
         userInfoDTO.setGender( (String) safeResultGet(set,"gender"));
         userInfoDTO.setCompany( (String) safeResultGet(set,"company"));
         userInfoDTO.setWanted_company((String) safeResultGet(set,"wanted_company"));
+        userInfoDTO.setInvitor((String)safeResultGet(set,"invitor"));
+        userInfoDTO.setEmailAddr((String)safeResultGet(set,"emailAddr"));
         return userInfoDTO;
     }
     private Object safeResultGet(ResultSet set, String columnLabel){

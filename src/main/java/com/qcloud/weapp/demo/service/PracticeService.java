@@ -15,10 +15,12 @@ public interface PracticeService {
      * @returnpublic
      */
     List<PracticeRecordDTO> getRecord(String openId, int stars);
-    List<QuestionDTO> getDatas(int stars, int groupId);
+
+    List<QuestionDTO> getDatas(String openId, int stars, int groupId);
+
     List<QuestionDTO> getExamQuestion(int stars);
+    String getQuestionAnalyse(String openId, int id,int star) throws Exception ;
 
 
 
-
-}
+    }

@@ -15,13 +15,25 @@ public class QuestionMapper implements ObjectMapper {
         QuestionDTO questionDTO = null;
         try {
                 questionDTO = new QuestionDTO();
+                questionDTO.setQuestionId((int) set.getLong("id"));
                 questionDTO.setContent(set.getString("question_content"));
                 questionDTO.setTips(set.getString("tip"));
                 questionDTO.setAnalyse(set.getString("analysis"));
                 questionDTO.setType(set.getString("type"));
+                questionDTO.setIsPurchAnalyse(safeResultGet(set,"purchId") == null ? 0:1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return questionDTO;
+    }
+
+    private Object safeResultGet(ResultSet set, String columnLabel){
+        Object obj = null;
+        try {
+            obj = set.getObject(columnLabel);
+        } catch (SQLException e) {
+            obj = null;
+        }
+        return obj;
     }
 }
