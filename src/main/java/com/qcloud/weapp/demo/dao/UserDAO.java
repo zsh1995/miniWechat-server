@@ -10,6 +10,7 @@ import com.qcloud.weapp.demo.util.OptTemplate;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -158,6 +159,25 @@ public class UserDAO {
                     e.printStackTrace();
                 }
                 return null;
+            }
+        });
+    }
+
+    public List<Map> queryAllInvite(String openId){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT IFNULL(invitedWU.student_name, invitedWU.wechat_nick) AS `name`, invitedWU.avatar_url FROM wechat_userinfo invitedWU LEFT JOIN wechat_userinfo invitorWU ON invitorWU.id = invitedWU.invitor WHERE invitorWU.openId = ?";
+        Object[] args = {openId};
+        return (List<Map>) optTemplate.query(sql, args, new ObjectMapper() {
+            @Override
+            public Object mapping(ResultSet set) {
+                Map map = new HashMap();
+                try {
+                    map.put("avatar_url",set.getString("avatar_url"));
+                    map.put("name",set.getString("name"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return map;
             }
         });
     }

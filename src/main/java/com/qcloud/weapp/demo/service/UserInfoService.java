@@ -20,4 +20,7 @@ public interface UserInfoService {
 
     List getPurchExamRecord(String openId);
 
+    List<Map> getAllInvite(String openId);
+
+
 }

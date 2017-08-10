@@ -39,4 +39,9 @@ public class UserInfoServiceImpl implements UserInfoService {
         return (List<Map>) payDAO.getPurchExamRecord(openId);
     }
 
+    @Override
+    public List<Map> getAllInvite(String openId) {
+        return userDao.queryAllInvite(openId);
+    }
+
 }
