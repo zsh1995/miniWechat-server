@@ -43,5 +43,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     public List<Map> getAllInvite(String openId) {
         return userDao.queryAllInvite(openId);
     }
+    @Override
+    public Map getMyInvitor(String openId){
+        return userDao.getMyInvitor(openId);
+    }
 
 }

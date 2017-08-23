@@ -23,4 +23,5 @@ public interface UserInfoService {
     List<Map> getAllInvite(String openId);
 
 
+    Map getMyInvitor(String openId);
 }

@@ -20,4 +20,8 @@ public class ApiConst {
 
     public static final int FAIL_EXAM = 1;
 
+    public static final String PRICE_EXAM="PRICE_EXAM";
+
+    public static final String PRICE_ANALYSE="PRICE_ANALYSE";
+
 }

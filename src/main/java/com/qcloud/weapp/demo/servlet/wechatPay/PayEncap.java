@@ -85,6 +85,7 @@ public class PayEncap extends HttpServlet{
         } else if(ApiConst.PURCH_TYPE_EXAM == type){
             record.setType(ApiConst.RIGHT_TYPE_EXAM);
             record.setPurchStar(star);
+            record.setPurchQuestionId(questionId);
         }
         Long id = payDAO.insertNewExamPayRecord(record);
         log.debug("payDao return : " + id);
@@ -108,7 +109,7 @@ public class PayEncap extends HttpServlet{
 
             if(ApiConst.PURCH_TYPE_EXAM == type){
                 order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_EXAM,star));
-                price = 1;
+                price = ApiMethod.getConstant(ApiConst.PRICE_EXAM);
 
                 switch (star){
                     case 1:bodyBuilder.append("一星级考试");break;
@@ -118,7 +119,7 @@ public class PayEncap extends HttpServlet{
 
             }else if(ApiConst.PURCH_TYPE_ANALYSE == type){
                 order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_ANALYSE,star,0,questionId));
-                price = 1;
+                price = ApiMethod.getConstant(ApiConst.PRICE_ANALYSE);
                 bodyBuilder.append("试题解析")
                         .append("No")
                         .append(questionId+",").append(star).append("星");

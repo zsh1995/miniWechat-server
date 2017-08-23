@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,9 +31,13 @@ public class getInvitedList extends HttpServlet {
         UserInfoService userInfoService = new UserInfoServiceImpl();
         JSONObject result = new JSONObject();
         try {
+            Map dataMap = new HashMap();
             UserInfo userInfo = loginService.check();
             List<Map> invitedList = userInfoService.getAllInvite(userInfo.getOpenId());
-            ApiMethod.formateResultWithDate(result,invitedList);
+            Map invitorInfo = userInfoService.getMyInvitor(userInfo.getOpenId());
+            dataMap.put("myInvitor",invitorInfo);
+            dataMap.put("invitedList",invitedList);
+            ApiMethod.formateResultWithDate(result,dataMap);
         } catch (LoginServiceException e) {
             ApiMethod.formateResultWithExcp(result,e);
             e.printStackTrace();

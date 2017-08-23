@@ -1,6 +1,8 @@
 package com.qcloud.weapp.demo.util;
 
+import com.alibaba.druid.pool.DruidPooledConnection;
 import com.qcloud.weapp.demo.db.DBConnection;
+import com.qcloud.weapp.demo.db.DbPoolConnection;
 import com.qcloud.weapp.demo.servlet.wechatPay.PayResult;
 import org.apache.log4j.Logger;
 
@@ -17,10 +19,11 @@ public class OptTemplate {
 
     public Object find(String sql, Object[] args,ObjectMapper mapper){
         Object resultObj = null;
-        Connection conn = null;
+        DruidPooledConnection conn = null;
         PreparedStatement ppst = null;
+        DbPoolConnection dbp = DbPoolConnection.getInstance();
         try {
-            conn = DBConnection.getConn();
+            conn = dbp.getConnection();
             ppst= conn.prepareStatement(sql);
             for(int cnt = 0; cnt < args.length;cnt++){
                 ppst.setObject(cnt+1,args[cnt]);
@@ -39,10 +42,11 @@ public class OptTemplate {
 
     public List<? extends Object> query(String sql,Object[] args,ObjectMapper mapper){
         List resultObj = new ArrayList();
-        Connection conn = null;
+        DruidPooledConnection conn = null;
         PreparedStatement ppst = null;
+        DbPoolConnection dbp = DbPoolConnection.getInstance();
         try {
-            conn = DBConnection.getConn();
+            conn = dbp.getConnection();
             ppst= conn.prepareStatement(sql);
             for(int cnt = 0; cnt < args.length;cnt++){
                 ppst.setObject(cnt+1,args[cnt]);
@@ -62,11 +66,12 @@ public class OptTemplate {
     }
 
     public boolean update(String sql,Object[] args,boolean isGenerateKey){
-        Connection conn = null;
+        DruidPooledConnection conn = null;
         PreparedStatement ppst = null;
         boolean successFlag = false;
+        DbPoolConnection dbp = DbPoolConnection.getInstance();
         try {
-            conn = DBConnection.getConn();
+            conn = dbp.getConnection();
             ppst = isGenerateKey? conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
                     : conn.prepareStatement(sql,Statement.NO_GENERATED_KEYS);
             for(int cnt = 0;cnt < args.length;cnt++){

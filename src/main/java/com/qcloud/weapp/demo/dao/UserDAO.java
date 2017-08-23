@@ -182,6 +182,26 @@ public class UserDAO {
         });
     }
 
+    public Map getMyInvitor(String openId){
+        OptTemplate optTemplate = new OptTemplate();
+        String sql = "SELECT wu2.avatar_url, IFNULL(wu2.student_name, wu2.wechat_nick) as name FROM wechat_userinfo wu1 LEFT JOIN wechat_userinfo wu2 ON wu2.id = wu1.invitor WHERE wu1.openId = ?";
+        Object[] args = {openId};
+        return (Map) optTemplate.find(sql, args, new ObjectMapper() {
+            @Override
+            public Object mapping(ResultSet set) {
+                Map map = new HashMap();
+                try {
+                    map.put("avatar_url",set.getString("avatar_url"));
+                    map.put("name",set.getString("name"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return map;
+            }
+        });
+
+    }
+
     public Long selecteUserRightAnalyse(WechatUserRight userRight){
         OptTemplate optTemplate = new OptTemplate();
         String sql = "SELECT id FROM wechat_user_right WHERE openId = ? AND type = ? AND questionId = ?";

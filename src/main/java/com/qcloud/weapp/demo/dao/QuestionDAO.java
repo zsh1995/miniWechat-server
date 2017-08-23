@@ -16,8 +16,8 @@ public class QuestionDAO {
 
     public List<QuestionDTO> getQuestionWork(String openId,Integer groupId){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content , wui.id AS purchId FROM wechat_questions_love wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id LEFT JOIN wechat_user_right wui ON wui.questionId = wqw.id AND wui.star = 3 AND wui.openId = ? WHERE pq.practice_class = 'work' AND pq.group_id = ?";
-        Object[] args={groupId};
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content , wui.id AS purchId FROM wechat_questions_work wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id LEFT JOIN wechat_user_right wui ON wui.questionId = wqw.id AND wui.star = 3 AND wui.openId = ? WHERE pq.practice_class = 'work' AND pq.group_id = ?";
+        Object[] args={openId,groupId};
         return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
     }
 
@@ -30,8 +30,8 @@ public class QuestionDAO {
 
     public List<QuestionDTO> getQuestionSocial(String openId,Integer groupId){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content , wui.id AS purchId FROM wechat_questions_love wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id LEFT JOIN wechat_user_right wui ON wui.questionId = wqw.id AND wui.star = 2 AND wui.openId = ? WHERE pq.practice_class = 'social' AND pq.group_id = ?";
-        Object[] args={groupId};
+        String sql = "SELECT wqw.id, wqw.type, wqw.tip, wqw.analysis, wqw.question_content , wui.id AS purchId FROM wechat_questions_social wqw LEFT JOIN practice_question pq ON pq.question_1 = wqw.id OR pq.question_1 = wqw.id OR pq.question_2 = wqw.id OR pq.question_3 = wqw.id OR pq.question_4 = wqw.id OR pq.question_5 = wqw.id OR pq.question_6 = wqw.id LEFT JOIN wechat_user_right wui ON wui.questionId = wqw.id AND wui.star = 2 AND wui.openId = ? WHERE pq.practice_class = 'social' AND pq.group_id = ?";
+        Object[] args={openId,groupId};
         return (List<QuestionDTO>)optTemplate.query(sql,args,new QuestionMapper());
     }
 

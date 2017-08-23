@@ -34,10 +34,10 @@ public class PracticeServiceImpl implements PracticeService {
             return questionDAO.getQuestionLove(openId,groupId);
         }
         if(2 == stars){
-            return questionDAO.getQuestionWork(openId,groupId);
+            return questionDAO.getQuestionSocial(openId,groupId);
         }
         if(3 == stars){
-            return questionDAO.getQuestionSocial(openId,groupId);
+            return questionDAO.getQuestionWork(openId,groupId);
         }else {
             return new ArrayList<QuestionDTO>();
         }
