@@ -4,10 +4,13 @@ import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
+import com.qcloud.weapp.demo.common.ApiConst;
 import com.qcloud.weapp.demo.dto.OptionsDTO;
 import com.qcloud.weapp.demo.dto.QuestionDTO;
 import com.qcloud.weapp.demo.service.PracticeService;
 import com.qcloud.weapp.demo.service.PracticeServiceImpl;
+import com.qcloud.weapp.demo.service.uerRight.UserRightService;
+import com.qcloud.weapp.demo.service.uerRight.UserRightServiceImpl;
 import com.qcloud.weapp.demo.util.JsonReader;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -44,6 +47,7 @@ public class QuestionServlet extends HttpServlet{
     }
 
     private PracticeService practiceService = new PracticeServiceImpl();
+
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

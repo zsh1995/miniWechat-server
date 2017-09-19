@@ -10,6 +10,9 @@ import com.qcloud.weapp.demo.service.UploadScoreService;
 import com.qcloud.weapp.demo.service.UploadScoreServiceImpl;
 import com.qcloud.weapp.demo.service.UserInfoService;
 import com.qcloud.weapp.demo.service.UserInfoServiceImpl;
+import com.qcloud.weapp.demo.service.coupon.CouponService;
+import com.qcloud.weapp.demo.service.coupon.CouponServiceImpl;
+import com.qcloud.weapp.demo.util.ExamCoupon;
 import com.qcloud.weapp.demo.util.JsonReader;
 import net.sf.json.JSONObject;
 
@@ -19,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/24.
@@ -26,9 +30,12 @@ import java.io.IOException;
 @WebServlet("/userInfo/setInvitor")
 public class UploadInvitorServlet extends HttpServlet {
 
+    private CouponService couponService = new CouponServiceImpl();
+
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginService service = new LoginService(request, response);
         UserInfoService uploadScoreService = new UserInfoServiceImpl();
+        ExamCoupon examCoupon = new ExamCoupon();
         JSONObject result = new JSONObject();
         try {
             UserInfo userInfo  = service.check();
@@ -36,6 +43,17 @@ public class UploadInvitorServlet extends HttpServlet {
 
             String invitorId = (String)jsonObject.get("invitorId");
             long lonInvitorId = invitorId != null?Long.parseLong(invitorId) : 0;
+            Map userData = uploadScoreService.getInvitor(lonInvitorId);
+            if( userData == null){
+                throw new Exception("不存在用户");
+            }
+            if(userData.get("openId").equals(userInfo.getOpenId())){
+                throw new Exception("不能自己邀请自己");
+            }
+
+            couponService.bindExamCoupon(userInfo.getOpenId());
+
+
             uploadScoreService.updateUserInvitor(lonInvitorId,userInfo.getOpenId());
             ApiMethod.formateResultWithNothing(result,true);
         } catch (LoginServiceException e) {
@@ -48,6 +66,8 @@ public class UploadInvitorServlet extends HttpServlet {
             e.printStackTrace();
             ApiMethod.formateResultWithExcp(result,e);
         }
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
         response.getWriter().write(result.toString());
     }
 

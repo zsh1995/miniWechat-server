@@ -15,7 +15,7 @@ import java.util.List;
  * Created by zsh1995 on 2017/6/16.
  */
 public class OptTemplate {
-    private static final Logger L = Logger.getLogger(PayResult.class);
+    private static final Logger L = Logger.getLogger(OptTemplate.class);
 
     public Object find(String sql, Object[] args,ObjectMapper mapper){
         Object resultObj = null;

@@ -66,9 +66,12 @@ public class PracticeServiceImpl implements PracticeService {
         //校验是否有改题权限
         //如果没有跑出异常
         String analyseContent = "";
-        int rightId = userRightService.checkUserRight(openId, ApiConst.PURCH_TYPE_ANALYSE,star,id);
-        if(0 == rightId){
-            throw new Exception("没有权限！");
+        if(!ApiConst.TEST_SHENHE) {
+            int rightId = userRightService.checkUserRight(openId, ApiConst.PURCH_TYPE_ANALYSE, star, id);
+            if(0 == rightId){
+                throw new Exception("没有权限！");
+            }
+
         }
         switch (star) {
             case 1:

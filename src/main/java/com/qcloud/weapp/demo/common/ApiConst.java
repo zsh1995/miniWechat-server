@@ -24,4 +24,10 @@ public class ApiConst {
 
     public static final String PRICE_ANALYSE="PRICE_ANALYSE";
 
+    public static final String ANALYSE_FREE_THREE_TIME = "ANALYSE_FREE";
+
+    public static final String EXAM_FREE_THREE_TIME = "EXAM_FREE";
+
+    public static final boolean TEST_SHENHE=true;
+
 }

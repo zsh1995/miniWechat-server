@@ -1,5 +1,6 @@
 package com.qcloud.weapp.demo.mapper;
 
+import com.qcloud.weapp.demo.common.ApiConst;
 import com.qcloud.weapp.demo.dto.QuestionDTO;
 import com.qcloud.weapp.demo.util.ObjectMapper;
 
@@ -18,9 +19,19 @@ public class QuestionMapper implements ObjectMapper {
                 questionDTO.setQuestionId((int) set.getLong("id"));
                 questionDTO.setContent(set.getString("question_content"));
                 questionDTO.setTips(set.getString("tip"));
-                questionDTO.setAnalyse(set.getString("analysis"));
+                String analyseContent = set.getString("analysis");
+                if("".equals(analyseContent) || analyseContent == null)
+                    questionDTO.setAnalyse("");
+                else
+                    questionDTO.setAnalyse("it has content");
+
                 questionDTO.setType(set.getString("type"));
-                questionDTO.setIsPurchAnalyse(safeResultGet(set,"purchId") == null ? 0:1);
+                if(ApiConst.TEST_SHENHE){
+                    questionDTO.setIsPurchAnalyse(1);
+                }else {
+                    questionDTO.setIsPurchAnalyse(safeResultGet(set,"purchId") == null ? 0:1);
+                }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -9,4 +9,6 @@ public interface LoginService {
 
     boolean doLogin(UserInfo userInfo);
 
+    boolean isExist(UserInfo userInfo);
+
 }

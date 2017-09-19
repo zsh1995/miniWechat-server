@@ -27,6 +27,9 @@ public class UserRightServiceImpl implements UserRightService {
             if(remainTimes == null){
                 remainTimes =0;
             }
+            if(ApiConst.TEST_SHENHE){
+                remainTimes = 6;
+            }
             return remainTimes;
         } else if(ApiConst.PURCH_TYPE_ANALYSE == type){
             //
@@ -65,12 +68,13 @@ public class UserRightServiceImpl implements UserRightService {
     }
 
     @Override
-    public boolean insertNewAnalyseRight(String openId, int questionId) throws Exception {
+    public boolean insertNewAnalyseRight(String openId, int star,int questionId) throws Exception {
         WechatUserRight userRight = new WechatUserRight();
 
         userRight.setType(ApiConst.RIGHT_TYPE_ANALYSE);
         userRight.setOpenId(openId);
         userRight.setQuestionId(questionId);
+        userRight.setStar(star);
         return userDAO.insertNewUserRight(userRight);
     }
 

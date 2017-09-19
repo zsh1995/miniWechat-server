@@ -4,6 +4,7 @@ import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.authorization.LoginService;
 import com.qcloud.weapp.authorization.LoginServiceException;
 import com.qcloud.weapp.authorization.UserInfo;
+import com.qcloud.weapp.demo.common.ApiConst;
 import com.qcloud.weapp.demo.service.uerRight.UserRightService;
 import com.qcloud.weapp.demo.service.uerRight.UserRightServiceImpl;
 import com.qcloud.weapp.demo.util.JsonReader;
@@ -48,6 +49,9 @@ public class CheckPurchRecordServlet extends HttpServlet{
             int questionId = (int) jsonObject.get("questionId");
             log.error("type:"+type+",star:"+star);
             int remainTimes = userRightService.checkUserRight(userInfo.getOpenId(),type,star,questionId);
+            if(ApiConst.TEST_SHENHE){
+                remainTimes = 6;
+            }
             log.error("remainTimes:"+remainTimes);
             JSONObject result = new JSONObject();
             JSONObject data = new JSONObject();

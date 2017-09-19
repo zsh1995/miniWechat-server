@@ -26,7 +26,7 @@ public class StringHelper {
                 if (ch[i] == '_') {
                     ch[i + 1] = Character.toUpperCase(ch[i + 1]);
                 } else {
-                    ch[i + 1] = Character.toLowerCase(ch[i + 1]);
+                    //ch[i + 1] = Character.toLowerCase(ch[i + 1]);
                 }
             }
         }

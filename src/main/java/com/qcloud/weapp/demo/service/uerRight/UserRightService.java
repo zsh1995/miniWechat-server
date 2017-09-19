@@ -15,7 +15,7 @@ public interface UserRightService {
     boolean insertNewExamRight(String openId,int star) throws Exception;
 
     //插入新的解析权限
-    boolean insertNewAnalyseRight(String openId,int questionId) throws Exception;
+    boolean insertNewAnalyseRight(String openId,int star ,int questionId) throws Exception;
 
     //根据新的购买信息更新用户权限信息
     boolean inserUserRight(String openId,String tradeNo);

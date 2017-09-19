@@ -40,33 +40,42 @@ public class MapperTools {
         T t = null;
         try {
             rsmd = rs.getMetaData();
-            if (rs.next()) {
-                t = clazz.newInstance();
-                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                    temp = rsmd.getColumnName(i);
-                    String javaName = StringHelper.toJavaAttributeName(temp);
-                    Field field = clazz.getField(javaName);
-                    s = clazz.getDeclaredMethod(StringHelper
-                            .asserSetMethodName(javaName),field.getType());
-                    s.invoke(t, rs.getObject(temp));
-                }
+            t = clazz.newInstance();
+            L.debug("MapperTools:--2"+rsmd.getColumnCount());
+            for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                temp = rsmd.getColumnName(i);
+                String javaName = StringHelper.toJavaAttributeName(temp);
+                Field field = clazz.getDeclaredField(javaName);
+                s = clazz.getDeclaredMethod(StringHelper
+                        .asserSetMethodName(javaName),field.getType());
+                s.invoke(t, rs.getObject(temp));
+                L.debug("MapperTools:"+rs.getObject(temp));
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (InvocationTargetException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (SecurityException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (InstantiationException e) {
             e.printStackTrace();
+            L.error(e);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
+            L.error(e);
         }
         return t;
     }

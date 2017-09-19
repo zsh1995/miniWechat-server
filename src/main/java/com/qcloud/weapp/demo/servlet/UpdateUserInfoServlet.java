@@ -29,7 +29,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
         try{
             return jsonObject.getString(key);
         }catch (Exception e){
-            return null;
+            return "";
         }
     }
 
