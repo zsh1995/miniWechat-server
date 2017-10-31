@@ -27,7 +27,11 @@ public class UserInfoMapper implements ObjectMapper {
         userInfoDTO.setCity( (String) safeResultGet(set,"city"));
         userInfoDTO.setGender( (String) safeResultGet(set,"gender"));
         userInfoDTO.setCompany( (String) safeResultGet(set,"company"));
-        userInfoDTO.setWanted_company((String) safeResultGet(set,"wanted_company"));
+        userInfoDTO.setWanted_company1((String) safeResultGet(set,"wanted_company1"));
+        userInfoDTO.setWanted_company2((String) safeResultGet(set,"wanted_company2"));
+        userInfoDTO.setWanted_company3((String) safeResultGet(set,"wanted_company3"));
+        userInfoDTO.setWanted_company4((String) safeResultGet(set,"wanted_company4"));
+        userInfoDTO.setWanted_company5((String) safeResultGet(set,"wanted_company5"));
         userInfoDTO.setInvitor((String)safeResultGet(set,"invitor"));
         userInfoDTO.setEmailAddr((String)safeResultGet(set,"emailAddr"));
         return userInfoDTO;

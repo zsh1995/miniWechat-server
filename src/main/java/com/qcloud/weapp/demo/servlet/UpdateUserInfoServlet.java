@@ -50,7 +50,11 @@ public class UpdateUserInfoServlet extends HttpServlet {
             userInfoDTO.setCity(saveGet(jsonObject,"city"));
             userInfoDTO.setGender(saveGet(jsonObject,"gender"));
             userInfoDTO.setCompany(saveGet(jsonObject,"company"));
-            userInfoDTO.setWanted_company(saveGet(jsonObject,"wanted_company"));
+            userInfoDTO.setWanted_company1(saveGet(jsonObject,"wanted_company1"));
+            userInfoDTO.setWanted_company2(saveGet(jsonObject,"wanted_company2"));
+            userInfoDTO.setWanted_company3(saveGet(jsonObject,"wanted_company3"));
+            userInfoDTO.setWanted_company4(saveGet(jsonObject,"wanted_company4"));
+            userInfoDTO.setWanted_company5(saveGet(jsonObject,"wanted_company5"));
             userInfoDTO.setEmailAddr(saveGet(jsonObject,"emailAddr"));
 
             userInfoService.updateUserInfo(userInfoDTO);

@@ -48,7 +48,7 @@ public class UploadInvitorServlet extends HttpServlet {
                 throw new Exception("不存在用户");
             }
             if(userData.get("openId").equals(userInfo.getOpenId())){
-                throw new Exception("不能自己邀请自己");
+                throw new Exception("不能选择自己");
             }
 
             couponService.bindExamCoupon(userInfo.getOpenId());

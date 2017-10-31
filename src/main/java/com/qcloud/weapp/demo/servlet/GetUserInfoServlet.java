@@ -43,7 +43,6 @@ public class GetUserInfoServlet extends HttpServlet {
             JSONObject data = new JSONObject();
             JSONObject listArray = JSONObject.fromObject(userInfoDTO);
             data.put("userInfo",listArray);
-            log.error("userInfo is :"+listArray);
             result.put("code", 0);
             result.put("message", "OK");
             result.put("data", data);

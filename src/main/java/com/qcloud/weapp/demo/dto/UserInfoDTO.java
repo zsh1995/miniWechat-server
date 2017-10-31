@@ -31,11 +31,59 @@ public class UserInfoDTO {
 
     private String company;
 
-    private String wanted_company;
+    private String wanted_company1;
+
+    private String wanted_company2;
+
+    private String wanted_company3;
+
+    private String wanted_company4;
+
+    private String wanted_company5;
 
     private String emailAddr;
 
     private String invitor;
+
+    public String getWanted_company1() {
+        return wanted_company1;
+    }
+
+    public void setWanted_company1(String wanted_company1) {
+        this.wanted_company1 = wanted_company1;
+    }
+
+    public String getWanted_company2() {
+        return wanted_company2;
+    }
+
+    public void setWanted_company2(String wanted_company2) {
+        this.wanted_company2 = wanted_company2;
+    }
+
+    public String getWanted_company3() {
+        return wanted_company3;
+    }
+
+    public void setWanted_company3(String wanted_company3) {
+        this.wanted_company3 = wanted_company3;
+    }
+
+    public String getWanted_company4() {
+        return wanted_company4;
+    }
+
+    public void setWanted_company4(String wanted_company4) {
+        this.wanted_company4 = wanted_company4;
+    }
+
+    public String getWanted_company5() {
+        return wanted_company5;
+    }
+
+    public void setWanted_company5(String wanted_company5) {
+        this.wanted_company5 = wanted_company5;
+    }
 
     public String getEmailAddr() {
         return emailAddr;
@@ -91,14 +139,6 @@ public class UserInfoDTO {
 
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    public String getWanted_company() {
-        return wanted_company;
-    }
-
-    public void setWanted_company(String wanted_company) {
-        this.wanted_company = wanted_company;
     }
 
     public String getSchool() {

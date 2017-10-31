@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class OptTemplate {
     private static final Logger L = Logger.getLogger(OptTemplate.class);
+    private static final EmailUtil emailUtil= EmailUtil.getInstance();
 
     public Object find(String sql, Object[] args,ObjectMapper mapper){
         Object resultObj = null;
@@ -95,9 +96,15 @@ public class OptTemplate {
             }
         } catch (SQLException e) {
             L.error("sqlerro:",e);
+            StringBuilder sb = new StringBuilder();
+            sb.append("<div>插入数据异常</div><div>错误数据：<p style='color:red'>");
+            for (Object arg:args
+                 ) {
+                sb.append(arg.toString()).append(",");
+            }
+            sb.append("<p></div>");
+            emailUtil.sendEmail("高尚联盟-错误警告!",sb.toString());
             e.printStackTrace();
-
-
         }finally {
             closeAll(conn,ppst);
         }

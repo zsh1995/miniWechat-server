@@ -109,12 +109,12 @@ public class PayEncap extends HttpServlet{
 
             if(ApiConst.PURCH_TYPE_EXAM == type){
                 order.setOut_trade_no(generateOutTradeNo(ApiConst.PURCH_TYPE_EXAM,star));
-                price = ApiMethod.getConstant(ApiConst.PRICE_EXAM);
+
 
                 switch (star){
-                    case 1:bodyBuilder.append("一星级考试");break;
-                    case 2:bodyBuilder.append("二星级考试");break;
-                    case 3:bodyBuilder.append("三星级考试");break;
+                    case 1:bodyBuilder.append("一星级考试");price = ApiMethod.getConstant(ApiConst.PRICE_EXAM_STAR1);break;
+                    case 2:bodyBuilder.append("二星级考试");price = ApiMethod.getConstant(ApiConst.PRICE_EXAM_STAR2);break;
+                    case 3:bodyBuilder.append("三星级考试");price = ApiMethod.getConstant(ApiConst.PRICE_EXAM_STAR3);break;
                 }
 
             }else if(ApiConst.PURCH_TYPE_ANALYSE == type){

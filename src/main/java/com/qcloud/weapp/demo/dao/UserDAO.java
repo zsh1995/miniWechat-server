@@ -19,14 +19,15 @@ import java.util.Map;
 public class UserDAO {
     public boolean insertNewLoginUser(UserInfoDTO userinfo){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "INSERT INTO wechat_userinfo(wechat_nick,openId,avatar_url,create_time) VALUE(?,?,?,NOW()) ON DUPLICATE KEY UPDATE wechat_nick= ?,openId=?,avatar_url=?";
+        String sql = "INSERT INTO wechat_userinfo(wechat_nick,openId,avatar_url,create_time) VALUE(?,?,?,NOW()) ON DUPLICATE KEY UPDATE wechat_nick= ?,openId=?,avatar_url=?,last_use=NOW()";
         String[] args = {userinfo.getNickName(),userinfo.getOpenId(),userinfo.getAvatarUrl(),userinfo.getNickName(),userinfo.getOpenId(),userinfo.getAvatarUrl()};
         return optTemplate.update(sql,args,false);
     }
 
     public UserInfoDTO getUserInfo(String openId){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT wu1.id,wu1.student_name,wu1.school,wu1.major,wu1.phone_number,wu1.post,wu1.type,wu1.city,wu1.gender,wu1.company,wu1.wanted_company,IFNULL(wu2.student_name,wu2.wechat_nick) as invitor, wu1.emailAddr FROM wechat_userinfo wu1 LEFT JOIN wechat_userinfo wu2 ON wu2.id = wu1.invitor WHERE wu1.openid = ? AND wu1.delete_flag = 0";
+        String sql = "SELECT wu1.id,wu1.student_name,wu1.school,wu1.major,wu1.phone_number,wu1.post,wu1.type,wu1.city,wu1.gender,wu1.wanted_company1,wu1.wanted_company2,wu1.wanted_company3,wu1.wanted_company4,wu1.wanted_company5," +
+                "IF(wu2.student_name = '' OR wu2.student_name  = NULL,wu2.wechat_nick,wu2.student_name) as invitor, wu1.emailAddr FROM wechat_userinfo wu1 LEFT JOIN wechat_userinfo wu2 ON wu2.id = wu1.invitor WHERE wu1.openid = ? AND wu1.delete_flag = 0";
         String[] args = {openId};
         return (UserInfoDTO) optTemplate.find(sql,args,new UserInfoMapper());
     }
@@ -61,11 +62,13 @@ public class UserDAO {
     public boolean updateUserInfo(UserInfoDTO userInfo){
         OptTemplate optTemplate = new OptTemplate();
         String sql = "UPDATE wechat_userinfo\n" +
-                "SET student_name =?,school =?,major = ?,phone_number = ?,post= ?,type= ?,city= ?,gender= ?,company= ?,wanted_company= ?,emailAddr=?\n" +
+                "SET student_name =?,school =?,major = ?,phone_number = ?,post= ?,type= ?,city= ?,gender= ?,company= ?,wanted_company1= ?,wanted_company2= ?,wanted_company3= ?,wanted_company4= ?,wanted_company5= ?," +
+                "emailAddr=?\n" +
                 "WHERE\n" +
-                "	openId =?";
+                " openId =?";
         String[] args = {userInfo.getStudent_name(),userInfo.getSchool(),userInfo.getMajor(),userInfo.getPhoneNumber(),
-                userInfo.getPost(),userInfo.getType(),userInfo.getCity(),userInfo.getGender(),userInfo.getCompany(),userInfo.getWanted_company(),userInfo.getEmailAddr(),
+                userInfo.getPost(),userInfo.getType(),userInfo.getCity(),userInfo.getGender(),userInfo.getCompany(),userInfo.getWanted_company1(),userInfo.getWanted_company2(),userInfo.getWanted_company3(),userInfo.getWanted_company4(),userInfo.getWanted_company5(),
+                userInfo.getEmailAddr(),
                 userInfo.getOpenId()};
         return optTemplate.update(sql,args,false);
     }
@@ -185,7 +188,7 @@ public class UserDAO {
 
     public Map getMyInvitor(String openId){
         OptTemplate optTemplate = new OptTemplate();
-        String sql = "SELECT wu2.avatar_url, IFNULL(wu2.student_name, wu2.wechat_nick) as name FROM wechat_userinfo wu1 LEFT JOIN wechat_userinfo wu2 ON wu2.id = wu1.invitor WHERE wu1.openId = ?";
+        String sql = "SELECT wu2.avatar_url, IF(wu2.student_name = '' OR wu2.student_name  = NULL,wu2.wechat_nick,wu2.student_name) as name FROM wechat_userinfo wu1 LEFT JOIN wechat_userinfo wu2 ON wu2.id = wu1.invitor WHERE wu1.openId = ?";
         Object[] args = {openId};
         return (Map) optTemplate.find(sql, args, new ObjectMapper() {
             @Override

@@ -20,7 +20,11 @@ public class ApiConst {
 
     public static final int FAIL_EXAM = 1;
 
-    public static final String PRICE_EXAM="PRICE_EXAM";
+    public static final String PRICE_EXAM_STAR1="PRICE_EXAM_STAR1";
+
+    public static final String PRICE_EXAM_STAR2="PRICE_EXAM_STAR2";
+
+    public static final String PRICE_EXAM_STAR3="PRICE_EXAM_STAR3";
 
     public static final String PRICE_ANALYSE="PRICE_ANALYSE";
 
@@ -28,6 +32,6 @@ public class ApiConst {
 
     public static final String EXAM_FREE_THREE_TIME = "EXAM_FREE";
 
-    public static final boolean TEST_SHENHE=true;
+    public static final boolean TEST_SHENHE=false;
 
 }
