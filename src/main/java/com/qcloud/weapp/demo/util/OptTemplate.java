@@ -96,14 +96,8 @@ public class OptTemplate {
             }
         } catch (SQLException e) {
             L.error("sqlerro:",e);
-            StringBuilder sb = new StringBuilder();
-            sb.append("<div>插入数据异常</div><div>错误数据：<p style='color:red'>");
-            for (Object arg:args
-                 ) {
-                sb.append(arg.toString()).append(",");
-            }
-            sb.append("<p></div>");
-            emailUtil.sendEmail("高尚联盟-错误警告!",sb.toString());
+            Thread sendMail = new SendEmail("erro","插入数据出错:"+e.getSQLState(),args);
+            sendMail.start();
             e.printStackTrace();
         }finally {
             closeAll(conn,ppst);

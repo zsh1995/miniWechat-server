@@ -47,7 +47,6 @@ public class EmailUtil {
             transport.connect(props.getProperty("mail.host"), props.getProperty("mail.password"));
             // 6. 发送邮件, 发到所有的收件地址, message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人
             transport.sendMessage(message, message.getAllRecipients());
-            L.error("mail ok!");
             // 7. 关闭连接
             transport.close();
         } catch (Exception e) {
