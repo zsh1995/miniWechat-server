@@ -104,6 +104,46 @@ public class OptTemplate {
         }
         return successFlag;
     }
+    public boolean update(String sql,Object[] args,long[] longId,boolean isGenerateKey){
+        DruidPooledConnection conn = null;
+        PreparedStatement ppst = null;
+        boolean successFlag = false;
+        DbPoolConnection dbp = DbPoolConnection.getInstance();
+        try {
+            conn = dbp.getConnection();
+            ppst = isGenerateKey? conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
+                    : conn.prepareStatement(sql,Statement.NO_GENERATED_KEYS);
+            for(int cnt = 0;cnt < args.length;cnt++){
+                ppst.setObject(cnt+1,args[cnt]);
+            }
+            conn.setAutoCommit(false);
+            int successNum = ppst.executeUpdate();
+
+            if(isGenerateKey){
+                ResultSet rs = ppst.getGeneratedKeys();
+                if(rs.next()){
+                    Long id = rs.getLong(1);
+                    longId[0] = id;
+                }
+            }
+            conn.commit();
+
+            if(successNum > 0 ){
+                L.error("sql:"+successNum);
+                successFlag = true;
+            }
+        } catch (SQLException e) {
+            L.error("sqlerro:",e);
+            Thread sendMail = new SendEmail("erro","插入数据出错:"+e.getSQLState(),args);
+            sendMail.start();
+            e.printStackTrace();
+        }finally {
+            closeAll(conn,ppst);
+        }
+        return successFlag;
+    }
+
+
 
     //关闭连接
     private void closeAll(Connection conn, PreparedStatement ppst) {

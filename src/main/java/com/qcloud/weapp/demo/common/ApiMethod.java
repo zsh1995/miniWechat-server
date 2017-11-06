@@ -48,5 +48,11 @@ public class ApiMethod {
         result.put("code", 1);
         result.put("message", e.getMessage());
     }
+    //String null Or empty
+    public static boolean isEmpty(String str){
+        if("".equals(str) || str == null) return true;
+        return false;
+    }
+
 
 }

@@ -12,7 +12,7 @@ public interface UserInfoService {
 
     UserInfoDTO getUserInfo(String openId);
 
-    boolean updateUserInfo(UserInfoDTO userInfoDTO);
+    boolean updateUserInfo(UserInfoDTO userInfoDTO) throws Exception;
 
     Map getInvitor(Long id);
 

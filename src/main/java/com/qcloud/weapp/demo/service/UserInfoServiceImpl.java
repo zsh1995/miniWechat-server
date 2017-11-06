@@ -3,6 +3,10 @@ package com.qcloud.weapp.demo.service;
 import com.qcloud.weapp.demo.dao.UserDAO;
 import com.qcloud.weapp.demo.dao.WechatPayDAO;
 import com.qcloud.weapp.demo.dto.UserInfoDTO;
+import com.qcloud.weapp.demo.entity.EnterpriseInfo;
+import com.qcloud.weapp.demo.service.company.CompanyService;
+import com.qcloud.weapp.demo.service.company.CompanyServiceImpl;
+import com.sun.xml.internal.xsom.impl.ComponentImpl;
 
 import java.util.List;
 import java.util.Map;
@@ -14,13 +18,22 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     UserDAO userDao = new UserDAO();
     WechatPayDAO payDAO = new WechatPayDAO();
+    CompanyService companyService = new CompanyServiceImpl();
     @Override
     public UserInfoDTO getUserInfo(String openId) {
         return userDao.getUserInfo(openId);
     }
 
     @Override
-    public boolean updateUserInfo(UserInfoDTO userInfoDTO) {
+    public boolean updateUserInfo(UserInfoDTO userInfoDTO){
+        long id = userDao.getUserInfo(userInfoDTO.getOpenId()).getId();
+        EnterpriseInfo enterpriseInfo = new EnterpriseInfo();
+        enterpriseInfo.setEnterpriseName(userInfoDTO.getWanted_company1());companyService.addNewCompany(enterpriseInfo,id);
+        enterpriseInfo.setEnterpriseName(userInfoDTO.getWanted_company2());companyService.addNewCompany(enterpriseInfo,id);
+        enterpriseInfo.setEnterpriseName(userInfoDTO.getWanted_company3());companyService.addNewCompany(enterpriseInfo,id);
+        enterpriseInfo.setEnterpriseName(userInfoDTO.getWanted_company4());companyService.addNewCompany(enterpriseInfo,id);
+        enterpriseInfo.setEnterpriseName(userInfoDTO.getWanted_company5());companyService.addNewCompany(enterpriseInfo,id);
+
         return userDao.updateUserInfo(userInfoDTO);
     }
 

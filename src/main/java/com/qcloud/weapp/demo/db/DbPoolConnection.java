@@ -17,7 +17,7 @@ public class DbPoolConnection {
     private static DruidDataSource dds = null;
     static {
 
-        Properties properties = loadPropertyFile("/db_server.properties");
+        Properties properties = loadPropertyFile("db_server.properties");
         try {
             dds = (DruidDataSource) DruidDataSourceFactory
                     .createDataSource(properties);

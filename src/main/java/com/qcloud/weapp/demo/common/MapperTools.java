@@ -43,7 +43,7 @@ public class MapperTools {
             t = clazz.newInstance();
             L.debug("MapperTools:--2"+rsmd.getColumnCount());
             for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                temp = rsmd.getColumnName(i);
+                temp = rsmd.getColumnLabel(i);
                 String javaName = StringHelper.toJavaAttributeName(temp);
                 Field field = clazz.getDeclaredField(javaName);
                 s = clazz.getDeclaredMethod(StringHelper
